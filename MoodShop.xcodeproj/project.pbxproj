@@ -15,6 +15,7 @@
 		DF93D8A02C16C51600E9DC10 /* MoodShopUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF93D89F2C16C51600E9DC10 /* MoodShopUITests.swift */; };
 		DF93D8A22C16C51600E9DC10 /* MoodShopUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF93D8A12C16C51600E9DC10 /* MoodShopUITestsLaunchTests.swift */; };
 		DF93D8B12C16C63700E9DC10 /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = DF93D8B02C16C63700E9DC10 /* .gitignore */; };
+		DF93D8B62C16D5FA00E9DC10 /* DynamicTextModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF93D8B52C16D5FA00E9DC10 /* DynamicTextModifier.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -46,6 +47,7 @@
 		DF93D89F2C16C51600E9DC10 /* MoodShopUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoodShopUITests.swift; sourceTree = "<group>"; };
 		DF93D8A12C16C51600E9DC10 /* MoodShopUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoodShopUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		DF93D8B02C16C63700E9DC10 /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
+		DF93D8B52C16D5FA00E9DC10 /* DynamicTextModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DynamicTextModifier.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -97,8 +99,8 @@
 		DF93D8832C16C51400E9DC10 /* MoodShop */ = {
 			isa = PBXGroup;
 			children = (
+				DF93D8B22C16D52B00E9DC10 /* Scene */,
 				DF93D8842C16C51400E9DC10 /* MoodShopApp.swift */,
-				DF93D8862C16C51400E9DC10 /* ContentView.swift */,
 				DF93D8882C16C51600E9DC10 /* Assets.xcassets */,
 				DF93D88A2C16C51600E9DC10 /* Preview Content */,
 			);
@@ -128,6 +130,31 @@
 				DF93D8A12C16C51600E9DC10 /* MoodShopUITestsLaunchTests.swift */,
 			);
 			path = MoodShopUITests;
+			sourceTree = "<group>";
+		};
+		DF93D8B22C16D52B00E9DC10 /* Scene */ = {
+			isa = PBXGroup;
+			children = (
+				DF93D8B42C16D54E00E9DC10 /* Modifier */,
+				DF93D8B32C16D53C00E9DC10 /* HomeView */,
+			);
+			path = Scene;
+			sourceTree = "<group>";
+		};
+		DF93D8B32C16D53C00E9DC10 /* HomeView */ = {
+			isa = PBXGroup;
+			children = (
+				DF93D8862C16C51400E9DC10 /* ContentView.swift */,
+			);
+			path = HomeView;
+			sourceTree = "<group>";
+		};
+		DF93D8B42C16D54E00E9DC10 /* Modifier */ = {
+			isa = PBXGroup;
+			children = (
+				DF93D8B52C16D5FA00E9DC10 /* DynamicTextModifier.swift */,
+			);
+			path = Modifier;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -262,6 +289,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				DF93D8872C16C51400E9DC10 /* ContentView.swift in Sources */,
+				DF93D8B62C16D5FA00E9DC10 /* DynamicTextModifier.swift in Sources */,
 				DF93D8852C16C51400E9DC10 /* MoodShopApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -434,6 +462,7 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -463,6 +492,7 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
