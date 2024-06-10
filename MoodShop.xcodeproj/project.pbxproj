@@ -14,6 +14,7 @@
 		DF93D8962C16C51600E9DC10 /* MoodShopTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF93D8952C16C51600E9DC10 /* MoodShopTests.swift */; };
 		DF93D8A02C16C51600E9DC10 /* MoodShopUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF93D89F2C16C51600E9DC10 /* MoodShopUITests.swift */; };
 		DF93D8A22C16C51600E9DC10 /* MoodShopUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF93D8A12C16C51600E9DC10 /* MoodShopUITestsLaunchTests.swift */; };
+		DF93D8B12C16C63700E9DC10 /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = DF93D8B02C16C63700E9DC10 /* .gitignore */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -44,6 +45,7 @@
 		DF93D89B2C16C51600E9DC10 /* MoodShopUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MoodShopUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		DF93D89F2C16C51600E9DC10 /* MoodShopUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoodShopUITests.swift; sourceTree = "<group>"; };
 		DF93D8A12C16C51600E9DC10 /* MoodShopUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoodShopUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		DF93D8B02C16C63700E9DC10 /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -74,6 +76,7 @@
 		DF93D8782C16C51400E9DC10 = {
 			isa = PBXGroup;
 			children = (
+				DF93D8B02C16C63700E9DC10 /* .gitignore */,
 				DF93D8832C16C51400E9DC10 /* MoodShop */,
 				DF93D8942C16C51600E9DC10 /* MoodShopTests */,
 				DF93D89E2C16C51600E9DC10 /* MoodShopUITests */,
@@ -232,6 +235,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				DF93D88C2C16C51600E9DC10 /* Preview Assets.xcassets in Resources */,
+				DF93D8B12C16C63700E9DC10 /* .gitignore in Resources */,
 				DF93D8892C16C51600E9DC10 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
