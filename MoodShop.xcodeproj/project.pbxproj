@@ -18,6 +18,10 @@
 		DF93D8B62C16D5FA00E9DC10 /* DynamicTextModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF93D8B52C16D5FA00E9DC10 /* DynamicTextModifier.swift */; };
 		DF93D8BA2C16EF0700E9DC10 /* HomeContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF93D8B92C16EF0700E9DC10 /* HomeContainer.swift */; };
 		DF93D8BD2C16EF8900E9DC10 /* ContainerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF93D8BC2C16EF8900E9DC10 /* ContainerProtocol.swift */; };
+		DF93D8C02C16F8B400E9DC10 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF93D8BF2C16F8B400E9DC10 /* NetworkManager.swift */; };
+		DF93D8C22C16FEC300E9DC10 /* RouterProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF93D8C12C16FEC300E9DC10 /* RouterProtocol.swift */; };
+		DF93D8C42C17035A00E9DC10 /* APIKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF93D8C32C17035A00E9DC10 /* APIKey.swift */; };
+		DF93D8C72C17058E00E9DC10 /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF93D8C62C17058E00E9DC10 /* Router.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -52,6 +56,10 @@
 		DF93D8B52C16D5FA00E9DC10 /* DynamicTextModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DynamicTextModifier.swift; sourceTree = "<group>"; };
 		DF93D8B92C16EF0700E9DC10 /* HomeContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeContainer.swift; sourceTree = "<group>"; };
 		DF93D8BC2C16EF8900E9DC10 /* ContainerProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContainerProtocol.swift; sourceTree = "<group>"; };
+		DF93D8BF2C16F8B400E9DC10 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
+		DF93D8C12C16FEC300E9DC10 /* RouterProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouterProtocol.swift; sourceTree = "<group>"; };
+		DF93D8C32C17035A00E9DC10 /* APIKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIKey.swift; sourceTree = "<group>"; };
+		DF93D8C62C17058E00E9DC10 /* Router.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Router.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -103,6 +111,8 @@
 		DF93D8832C16C51400E9DC10 /* MoodShop */ = {
 			isa = PBXGroup;
 			children = (
+				DF93D8C52C17048700E9DC10 /* Enum */,
+				DF93D8BE2C16F88700E9DC10 /* Network */,
 				DF93D8BB2C16EF7800E9DC10 /* Protocol */,
 				DF93D8B22C16D52B00E9DC10 /* Scene */,
 				DF93D8882C16C51600E9DC10 /* Assets.xcassets */,
@@ -183,8 +193,26 @@
 			isa = PBXGroup;
 			children = (
 				DF93D8BC2C16EF8900E9DC10 /* ContainerProtocol.swift */,
+				DF93D8C12C16FEC300E9DC10 /* RouterProtocol.swift */,
 			);
 			path = Protocol;
+			sourceTree = "<group>";
+		};
+		DF93D8BE2C16F88700E9DC10 /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				DF93D8BF2C16F8B400E9DC10 /* NetworkManager.swift */,
+				DF93D8C62C17058E00E9DC10 /* Router.swift */,
+			);
+			path = Network;
+			sourceTree = "<group>";
+		};
+		DF93D8C52C17048700E9DC10 /* Enum */ = {
+			isa = PBXGroup;
+			children = (
+				DF93D8C32C17035A00E9DC10 /* APIKey.swift */,
+			);
+			path = Enum;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -318,7 +346,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DF93D8C02C16F8B400E9DC10 /* NetworkManager.swift in Sources */,
+				DF93D8C22C16FEC300E9DC10 /* RouterProtocol.swift in Sources */,
+				DF93D8C42C17035A00E9DC10 /* APIKey.swift in Sources */,
 				DF93D8872C16C51400E9DC10 /* ContentView.swift in Sources */,
+				DF93D8C72C17058E00E9DC10 /* Router.swift in Sources */,
 				DF93D8BD2C16EF8900E9DC10 /* ContainerProtocol.swift in Sources */,
 				DF93D8B62C16D5FA00E9DC10 /* DynamicTextModifier.swift in Sources */,
 				DF93D8BA2C16EF0700E9DC10 /* HomeContainer.swift in Sources */,
