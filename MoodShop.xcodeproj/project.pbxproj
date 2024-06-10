@@ -16,6 +16,8 @@
 		DF93D8A22C16C51600E9DC10 /* MoodShopUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF93D8A12C16C51600E9DC10 /* MoodShopUITestsLaunchTests.swift */; };
 		DF93D8B12C16C63700E9DC10 /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = DF93D8B02C16C63700E9DC10 /* .gitignore */; };
 		DF93D8B62C16D5FA00E9DC10 /* DynamicTextModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF93D8B52C16D5FA00E9DC10 /* DynamicTextModifier.swift */; };
+		DF93D8BA2C16EF0700E9DC10 /* HomeContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF93D8B92C16EF0700E9DC10 /* HomeContainer.swift */; };
+		DF93D8BD2C16EF8900E9DC10 /* ContainerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF93D8BC2C16EF8900E9DC10 /* ContainerProtocol.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -48,6 +50,8 @@
 		DF93D8A12C16C51600E9DC10 /* MoodShopUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoodShopUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		DF93D8B02C16C63700E9DC10 /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
 		DF93D8B52C16D5FA00E9DC10 /* DynamicTextModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DynamicTextModifier.swift; sourceTree = "<group>"; };
+		DF93D8B92C16EF0700E9DC10 /* HomeContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeContainer.swift; sourceTree = "<group>"; };
+		DF93D8BC2C16EF8900E9DC10 /* ContainerProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContainerProtocol.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,8 +103,8 @@
 		DF93D8832C16C51400E9DC10 /* MoodShop */ = {
 			isa = PBXGroup;
 			children = (
+				DF93D8BB2C16EF7800E9DC10 /* Protocol */,
 				DF93D8B22C16D52B00E9DC10 /* Scene */,
-				DF93D8842C16C51400E9DC10 /* MoodShopApp.swift */,
 				DF93D8882C16C51600E9DC10 /* Assets.xcassets */,
 				DF93D88A2C16C51600E9DC10 /* Preview Content */,
 			);
@@ -135,18 +139,20 @@
 		DF93D8B22C16D52B00E9DC10 /* Scene */ = {
 			isa = PBXGroup;
 			children = (
+				DF93D8842C16C51400E9DC10 /* MoodShopApp.swift */,
 				DF93D8B42C16D54E00E9DC10 /* Modifier */,
-				DF93D8B32C16D53C00E9DC10 /* HomeView */,
+				DF93D8B32C16D53C00E9DC10 /* Home */,
 			);
 			path = Scene;
 			sourceTree = "<group>";
 		};
-		DF93D8B32C16D53C00E9DC10 /* HomeView */ = {
+		DF93D8B32C16D53C00E9DC10 /* Home */ = {
 			isa = PBXGroup;
 			children = (
-				DF93D8862C16C51400E9DC10 /* ContentView.swift */,
+				DF93D8B82C16EEED00E9DC10 /* Container */,
+				DF93D8B72C16EEE100E9DC10 /* View */,
 			);
-			path = HomeView;
+			path = Home;
 			sourceTree = "<group>";
 		};
 		DF93D8B42C16D54E00E9DC10 /* Modifier */ = {
@@ -155,6 +161,30 @@
 				DF93D8B52C16D5FA00E9DC10 /* DynamicTextModifier.swift */,
 			);
 			path = Modifier;
+			sourceTree = "<group>";
+		};
+		DF93D8B72C16EEE100E9DC10 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				DF93D8862C16C51400E9DC10 /* ContentView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		DF93D8B82C16EEED00E9DC10 /* Container */ = {
+			isa = PBXGroup;
+			children = (
+				DF93D8B92C16EF0700E9DC10 /* HomeContainer.swift */,
+			);
+			path = Container;
+			sourceTree = "<group>";
+		};
+		DF93D8BB2C16EF7800E9DC10 /* Protocol */ = {
+			isa = PBXGroup;
+			children = (
+				DF93D8BC2C16EF8900E9DC10 /* ContainerProtocol.swift */,
+			);
+			path = Protocol;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -289,7 +319,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				DF93D8872C16C51400E9DC10 /* ContentView.swift in Sources */,
+				DF93D8BD2C16EF8900E9DC10 /* ContainerProtocol.swift in Sources */,
 				DF93D8B62C16D5FA00E9DC10 /* DynamicTextModifier.swift in Sources */,
+				DF93D8BA2C16EF0700E9DC10 /* HomeContainer.swift in Sources */,
 				DF93D8852C16C51400E9DC10 /* MoodShopApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
