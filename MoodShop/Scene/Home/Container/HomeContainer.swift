@@ -12,6 +12,7 @@ final class HomeContainer: ObservableObject, ContainerProtocol {
     
     enum Intent {
         case search(String)
+        case searchTap
     }
     
     struct State {
@@ -25,6 +26,15 @@ final class HomeContainer: ObservableObject, ContainerProtocol {
         switch intent {
         case .search(let text):
             state.text = text
+
+            print(text)
+        case .searchTap:
+            
+            Task {
+                await NetworkManager.shared.search(text: state.text)
+            }
+            
+            print("tap", state.text)
         }
     }
     

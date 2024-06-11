@@ -31,9 +31,8 @@ struct ContentView: View {
         }, set: { text, _ in
             container.send(.search(text))
         }))
+        .onSubmit(of: .search) {
+            container.send(.searchTap)
+        }
     }
-}
-
-#Preview {
-    ContentView()
 }

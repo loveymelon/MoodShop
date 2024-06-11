@@ -19,7 +19,7 @@ enum Path: String {
     case path = "search/shop.json"
 }
 
-enum Header: String {
+enum Method: String {
     case get = "GET"
 }
 
@@ -35,28 +35,57 @@ enum OptionalError: Error {
 }
 
 protocol RouterProtocol {
-    var header: Header { get }
+    var header: [String: String] { get }
     var baseURL: BaseURL { get }
     var version: Version { get }
     var path: Path { get }
+    var method: Method { get }
     var queryString: [QueryString] { get }
 }
 
 extension RouterProtocol {
-    func asURLRequest() throws -> URLRequest {
+    func asURLRequest(text: String) throws -> URLRequest {
         
         guard let url = URL(string: baseURL.rawValue) else { throw OptionalError.noData }
+        var urlRequest: URLRequest
         
         if #available(iOS 16.0, *) {
-            let urlRequest = URLRequest(url: url.appending(path: version.rawValue + path.rawValue))
-            
-            return urlRequest
+            urlRequest = URLRequest(url: url.appending(path: version.rawValue + path.rawValue))
         } else {
-            let urlRequest = URLRequest(url: url.appendingPathComponent(version.rawValue + path.rawValue))
+            urlRequest = URLRequest(url: url.appendingPathComponent(version.rawValue + path.rawValue))
+        } // 이정도면 따로 함수로 안빼고 놔둬도 괜찮겠지?
+        
+        urlRequest.httpMethod = method.rawValue
+        urlRequest.allHTTPHeaderFields = header
+        
+        for item in queryString {
+            let queryItem = URLQueryItem(name: item.rawValue, value: text)
             
-            return urlRequest
+            if #available(iOS 16.0, *) {
+                
+                urlRequest.url?.append(queryItems: [queryItem])
+                
+            } else {
+                
+                guard let requestURL = urlRequest.url else { throw OptionalError.noData }
+                
+                urlRequest.url = appendQueryItems(to: requestURL, queryItems: [queryItem])
+                
+            }
         }
         
+        return urlRequest
         
+    }
+    
+    private func appendQueryItems(to url: URL, queryItems: [URLQueryItem]) -> URL? {
+        
+        var urlComponents = URLComponents(url: url, resolvingAgainstBaseURL: false)
+        var newQueryItems = urlComponents?.queryItems ?? []
+        
+        newQueryItems.append(contentsOf: queryItems)
+        urlComponents?.queryItems = newQueryItems
+        
+        return urlComponents?.url
     }
 }

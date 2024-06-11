@@ -7,14 +7,39 @@
 
 import Foundation
 
-class NetworkManager {
-    let shared = NetworkManager()
+final class NetworkManager {
+    static let shared = NetworkManager()
     
     private init() { }
     
-    let url = URL(string: "https://openapi.naver.com/v1/search/shop.json")
-    
-    let a = Router.search
-    
+    func search(text: String) async {
+        do {
+            let request = try Router.search.asURLRequest(text: text)
+            
+            try await URLSession.shared.dataTask(with: request) { data, response, error in
+                
+                guard error == nil else {
+                    print("error")
+                    return 
+                }
+                
+                guard let data = data, let response = response as? HTTPURLResponse, (200..<300) ~= response.statusCode else {
+                  print("Error: HTTP request failed")
+                  return
+                }
+                
+                guard let output = try? JSONDecoder().decode(ShopModel.self, from: data) else {
+                  print("Error: JSON data parsing failed")
+                  return
+                }
+                
+                print(output)
+                
+            }.resume()
+            
+        } catch {
+            print(error)
+        }
+    }
     
 }

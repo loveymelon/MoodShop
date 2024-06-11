@@ -14,11 +14,29 @@ enum Router {
 }
 
 extension Router: RouterProtocol {
+    var version: Version {
+        switch self {
+        case .search:
+            return .version
+        }
+    }
     
-    var header: Header {
+    var method: Method {
         switch self {
         case .search:
             return .get
+        }
+    }
+    
+    
+    var header: [String: String] {
+        switch self {
+        case .search:
+            return [
+                "X-Naver-Client-Id": APIKey.clientId.rawValue,
+                "X-Naver-Client-Secret": APIKey.clientSecret.rawValue,
+                "Content-Type": "application/json"
+            ]
         }
     }
     
@@ -26,13 +44,6 @@ extension Router: RouterProtocol {
         switch self {
         case .search:
             return .baseURL
-        }
-    }
-    
-    var versopm: Version {
-        switch self {
-        case .search:
-            return .version
         }
     }
     
@@ -46,7 +57,7 @@ extension Router: RouterProtocol {
     var queryString: [QueryString] {
         switch self {
         case .search:
-            return [.display]
+            return [.query]
         }
     }
     
