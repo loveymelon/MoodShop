@@ -19,6 +19,7 @@ final class HomeContainer: ObservableObject, ContainerProtocol {
     struct State {
         var text: String = ""
         var shopData = ShopEntity()
+        var error: String = ""
     }
     
     let homeRepository = HomeRepository()
@@ -31,13 +32,17 @@ final class HomeContainer: ObservableObject, ContainerProtocol {
         case .search(let text):
             state.text = text
 
-            print(text)
         case .searchTap:
             
             Task {
                 do {
                     
-                    try await homeRepository.fetchSearch(text: state.text) {  result in
+                    try await homeRepository.fetchSearch(text: state.text) { [weak self] result in
+                        
+                        guard let self else {
+                            self?.state.error = CommonError.missingError.description
+                            return
+                        }
                         
                         switch result {
                         case .success(let data):
@@ -45,24 +50,26 @@ final class HomeContainer: ObservableObject, ContainerProtocol {
                             
                             DispatchQueue.main.async { [weak self] in
                                 
-                                guard let self else { return }
+                                guard let self else {
+                                    self?.state.error = CommonError.missingError.description
+                                    return
+                                }
                                 
                                 state.shopData = data
                             }
                             
                         case .failure(let error):
-                            print(error)
+                            state.error = error.description
                         }
                     }
                     
                 } catch {
                     
-                    print(error)
+                    state.error = CommonError.missingError.description
                     
                 }
             }
             
-            print("tap", state.text)
         }
     }
     

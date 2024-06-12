@@ -30,10 +30,6 @@ enum QueryString: String {
     case sort
 }
 
-enum OptionalError: Error {
-    case noData
-}
-
 protocol RouterProtocol {
     var header: [String: String] { get }
     var baseURL: BaseURL { get }
@@ -46,7 +42,7 @@ protocol RouterProtocol {
 extension RouterProtocol {
     func asURLRequest(text: String) throws -> URLRequest {
         
-        guard let url = URL(string: baseURL.rawValue) else { throw OptionalError.noData }
+        guard let url = URL(string: baseURL.rawValue) else { throw NetworkError.invalidURL }
         var urlRequest: URLRequest
         
         if #available(iOS 16.0, *) {
@@ -67,7 +63,7 @@ extension RouterProtocol {
                 
             } else {
                 
-                guard let requestURL = urlRequest.url else { throw OptionalError.noData }
+                guard let requestURL = urlRequest.url else { throw NetworkError.invalidResponse }
                 
                 urlRequest.url = appendQueryItems(to: requestURL, queryItems: [queryItem])
                 

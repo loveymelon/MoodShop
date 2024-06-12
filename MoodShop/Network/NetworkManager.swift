@@ -12,7 +12,7 @@ final class NetworkManager {
     
     private init() { }
     
-    func search(text: String, completionHandler: @escaping (Result<ShopModel, OptionalError>) -> Void) async {
+    func search(text: String, completionHandler: @escaping (Result<ShopModel, NetworkError>) -> Void) async {
         
         do {
             let request = try Router.search.asURLRequest(text: text)
@@ -20,18 +20,18 @@ final class NetworkManager {
             try await URLSession.shared.dataTask(with: request) { data, response, error in
                 
                 guard error == nil else {
-                    print("error")
-                    return 
+                    completionHandler(.failure(.unowned))
+                    return
                 }
                 
                 guard let data = data, let response = response as? HTTPURLResponse, (200..<300) ~= response.statusCode else {
-                  print("Error: HTTP request failed")
-                  return
+                    completionHandler(.failure(.invalidResponse))
+                    return
                 }
                 
                 guard let output = try? JSONDecoder().decode(ShopModel.self, from: data) else {
-                  print("Error: JSON data parsing failed")
-                  return
+                    completionHandler(.failure(.invalidData))
+                    return
                 }
                 
                 completionHandler(.success(output))
@@ -39,7 +39,7 @@ final class NetworkManager {
             }.resume()
             
         } catch {
-            print(error)
+            completionHandler(.failure(.unowned))
         }
         
     }
