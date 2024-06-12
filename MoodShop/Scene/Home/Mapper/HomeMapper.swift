@@ -9,36 +9,18 @@ import Foundation
 
 class HomeMapper {
     
-    func searchText (text: String, completionHandler: @escaping (Result<ShopEntity, Error>) -> Void) async {
-        Task {
-            await NetworkManager.shared.search(text: text) { [weak self] result in
-                
-                guard let self else { return }
-                
-                switch result {
-                case .success(let data):
-                    completionHandler(.success(transData(data: data)))
-                case .failure(let error):
-                    completionHandler(.failure(error))
-                }
-                
-            }
-        }
+    func shopDtoToEntity(data: ShopModel) -> ShopEntity {
+        return ShopEntity(total: data.total, start: data.start, display: data.display, items: toShopItemEntity(data: data))
     }
     
 }
 
+// 하나의 함수에서 하나 일만 담당하기 위해서 따로 뺐다.
+// ShopModel을 받으면 내부에 있는 배열을 client가 원하는 타입으로 변경하여 사용하고 있다.
 extension HomeMapper {
-    
-    private func transData(data: ShopModel) -> ShopEntity {
-        
-        var shopItemEntity: [ShopItemEntity] = []
-        
-        for item in data.items {
-            shopItemEntity.append(ShopItemEntity(title: item.title, link: item.link, image: item.image, lprice: Int(item.lprice) ?? 0, mallName: item.mallName, productId: item.productId))
+    func toShopItemEntity(data: ShopModel) -> [ShopItemEntity] {
+        return data.items.map { datas in
+            ShopItemEntity(title: datas.title, link: datas.link, image: datas.image, lprice: Int(datas.lprice) ?? 0, mallName: datas.mallName, productId: datas.productId)
         }
-        
-        return ShopEntity(total: data.total, start: data.start, display: data.display, items: shopItemEntity)
     }
-    
 }

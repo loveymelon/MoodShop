@@ -25,6 +25,8 @@
 		DF93D8C22C16FEC300E9DC10 /* RouterProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF93D8C12C16FEC300E9DC10 /* RouterProtocol.swift */; };
 		DF93D8C42C17035A00E9DC10 /* APIKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF93D8C32C17035A00E9DC10 /* APIKey.swift */; };
 		DF93D8C72C17058E00E9DC10 /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF93D8C62C17058E00E9DC10 /* Router.swift */; };
+		DFA6D3692C197FD10017CEE2 /* HomeRepositoryProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFA6D3682C197FD10017CEE2 /* HomeRepositoryProtocol.swift */; };
+		DFA6D36C2C1980490017CEE2 /* HomeRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFA6D36B2C1980490017CEE2 /* HomeRepository.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -66,6 +68,8 @@
 		DF93D8C12C16FEC300E9DC10 /* RouterProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouterProtocol.swift; sourceTree = "<group>"; };
 		DF93D8C32C17035A00E9DC10 /* APIKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIKey.swift; sourceTree = "<group>"; };
 		DF93D8C62C17058E00E9DC10 /* Router.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Router.swift; sourceTree = "<group>"; };
+		DFA6D3682C197FD10017CEE2 /* HomeRepositoryProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeRepositoryProtocol.swift; sourceTree = "<group>"; };
+		DFA6D36B2C1980490017CEE2 /* HomeRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeRepository.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -165,6 +169,7 @@
 		DF93D8B32C16D53C00E9DC10 /* Home */ = {
 			isa = PBXGroup;
 			children = (
+				DFA6D36A2C19803D0017CEE2 /* Repository */,
 				DFA6D3672C1978350017CEE2 /* Mapper */,
 				DF93D8B82C16EEED00E9DC10 /* Container */,
 				DF93D8B72C16EEE100E9DC10 /* View */,
@@ -201,6 +206,7 @@
 			children = (
 				DF93D8BC2C16EF8900E9DC10 /* ContainerProtocol.swift */,
 				DF93D8C12C16FEC300E9DC10 /* RouterProtocol.swift */,
+				DFA6D3682C197FD10017CEE2 /* HomeRepositoryProtocol.swift */,
 			);
 			path = Protocol;
 			sourceTree = "<group>";
@@ -230,6 +236,14 @@
 				DF763DA22C185DFC001F5B60 /* HomeMapper.swift */,
 			);
 			path = Mapper;
+			sourceTree = "<group>";
+		};
+		DFA6D36A2C19803D0017CEE2 /* Repository */ = {
+			isa = PBXGroup;
+			children = (
+				DFA6D36B2C1980490017CEE2 /* HomeRepository.swift */,
+			);
+			path = Repository;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -367,9 +381,11 @@
 				DF93D8C22C16FEC300E9DC10 /* RouterProtocol.swift in Sources */,
 				DF93D8C42C17035A00E9DC10 /* APIKey.swift in Sources */,
 				DF763D9D2C1827C9001F5B60 /* ShopModel.swift in Sources */,
+				DFA6D3692C197FD10017CEE2 /* HomeRepositoryProtocol.swift in Sources */,
 				DF93D8872C16C51400E9DC10 /* ContentView.swift in Sources */,
 				DF93D8C72C17058E00E9DC10 /* Router.swift in Sources */,
 				DF93D8BD2C16EF8900E9DC10 /* ContainerProtocol.swift in Sources */,
+				DFA6D36C2C1980490017CEE2 /* HomeRepository.swift in Sources */,
 				DF763DA12C18462B001F5B60 /* ShopEntity.swift in Sources */,
 				DF93D8B62C16D5FA00E9DC10 /* DynamicTextModifier.swift in Sources */,
 				DF763DA32C185DFC001F5B60 /* HomeMapper.swift in Sources */,

@@ -21,7 +21,7 @@ final class HomeContainer: ObservableObject, ContainerProtocol {
         var shopData = ShopEntity()
     }
     
-    let maper = HomeMapper()
+    let homeRepository = HomeRepository()
     
     @Published
     private(set) var state: State = State()
@@ -35,16 +35,29 @@ final class HomeContainer: ObservableObject, ContainerProtocol {
         case .searchTap:
             
             Task {
-                await maper.searchText(text: state.text) { [weak self] result in
+                do {
                     
-                    guard let self else { return }
-                    
-                    switch result {
-                    case .success(let data):
-                        state.shopData = data
-                    case .failure(let error):
-                        print(error)
+                    try await homeRepository.fetchSearch(text: state.text) {  result in
+                        
+                        switch result {
+                        case .success(let data):
+                            print("container", data)
+                            
+                            DispatchQueue.main.async { [weak self] in
+                                
+                                guard let self else { return }
+                                
+                                state.shopData = data
+                            }
+                            
+                        case .failure(let error):
+                            print(error)
+                        }
                     }
+                    
+                } catch {
+                    
+                    print(error)
                     
                 }
             }
