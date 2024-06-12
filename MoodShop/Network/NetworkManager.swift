@@ -12,7 +12,8 @@ final class NetworkManager {
     
     private init() { }
     
-    func search(text: String) async {
+    func search(text: String, completionHandler: @escaping (Result<ShopModel, OptionalError>) -> Void) async {
+        
         do {
             let request = try Router.search.asURLRequest(text: text)
             
@@ -33,13 +34,14 @@ final class NetworkManager {
                   return
                 }
                 
-                print(output)
+                completionHandler(.success(output))
                 
             }.resume()
             
         } catch {
             print(error)
         }
+        
     }
     
 }

@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		DF763D9D2C1827C9001F5B60 /* ShopModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF763D9C2C1827C9001F5B60 /* ShopModel.swift */; };
+		DF763DA12C18462B001F5B60 /* ShopEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF763DA02C18462B001F5B60 /* ShopEntity.swift */; };
+		DF763DA32C185DFC001F5B60 /* HomeMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF763DA22C185DFC001F5B60 /* HomeMapper.swift */; };
 		DF93D8852C16C51400E9DC10 /* MoodShopApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF93D8842C16C51400E9DC10 /* MoodShopApp.swift */; };
 		DF93D8872C16C51400E9DC10 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF93D8862C16C51400E9DC10 /* ContentView.swift */; };
 		DF93D8892C16C51600E9DC10 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DF93D8882C16C51600E9DC10 /* Assets.xcassets */; };
@@ -44,6 +46,8 @@
 
 /* Begin PBXFileReference section */
 		DF763D9C2C1827C9001F5B60 /* ShopModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShopModel.swift; sourceTree = "<group>"; };
+		DF763DA02C18462B001F5B60 /* ShopEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShopEntity.swift; sourceTree = "<group>"; };
+		DF763DA22C185DFC001F5B60 /* HomeMapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeMapper.swift; sourceTree = "<group>"; };
 		DF93D8812C16C51400E9DC10 /* MoodShop.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MoodShop.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DF93D8842C16C51400E9DC10 /* MoodShopApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoodShopApp.swift; sourceTree = "<group>"; };
 		DF93D8862C16C51400E9DC10 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -161,6 +165,7 @@
 		DF93D8B32C16D53C00E9DC10 /* Home */ = {
 			isa = PBXGroup;
 			children = (
+				DFA6D3672C1978350017CEE2 /* Mapper */,
 				DF93D8B82C16EEED00E9DC10 /* Container */,
 				DF93D8B72C16EEE100E9DC10 /* View */,
 			);
@@ -206,6 +211,7 @@
 				DF93D8BF2C16F8B400E9DC10 /* NetworkManager.swift */,
 				DF93D8C62C17058E00E9DC10 /* Router.swift */,
 				DF763D9C2C1827C9001F5B60 /* ShopModel.swift */,
+				DF763DA02C18462B001F5B60 /* ShopEntity.swift */,
 			);
 			path = Network;
 			sourceTree = "<group>";
@@ -216,6 +222,14 @@
 				DF93D8C32C17035A00E9DC10 /* APIKey.swift */,
 			);
 			path = Enum;
+			sourceTree = "<group>";
+		};
+		DFA6D3672C1978350017CEE2 /* Mapper */ = {
+			isa = PBXGroup;
+			children = (
+				DF763DA22C185DFC001F5B60 /* HomeMapper.swift */,
+			);
+			path = Mapper;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -356,7 +370,9 @@
 				DF93D8872C16C51400E9DC10 /* ContentView.swift in Sources */,
 				DF93D8C72C17058E00E9DC10 /* Router.swift in Sources */,
 				DF93D8BD2C16EF8900E9DC10 /* ContainerProtocol.swift in Sources */,
+				DF763DA12C18462B001F5B60 /* ShopEntity.swift in Sources */,
 				DF93D8B62C16D5FA00E9DC10 /* DynamicTextModifier.swift in Sources */,
+				DF763DA32C185DFC001F5B60 /* HomeMapper.swift in Sources */,
 				DF93D8BA2C16EF0700E9DC10 /* HomeContainer.swift in Sources */,
 				DF93D8852C16C51400E9DC10 /* MoodShopApp.swift in Sources */,
 			);

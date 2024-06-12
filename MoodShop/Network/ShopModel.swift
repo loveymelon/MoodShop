@@ -7,6 +7,7 @@
 
 import Foundation
 
+// DTO
 struct ShopModel: Decodable {
     let total: Int
     let start: Int
