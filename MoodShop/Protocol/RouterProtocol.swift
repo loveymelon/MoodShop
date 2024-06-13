@@ -55,7 +55,7 @@ extension RouterProtocol {
         urlRequest.allHTTPHeaderFields = header
         
         for item in queryString {
-            let queryItem = URLQueryItem(name: item.rawValue, value: text)
+            let queryItem = URLQueryItem(name: "item.rawValue", value: text)
             
             if #available(iOS 16.0, *) {
                 

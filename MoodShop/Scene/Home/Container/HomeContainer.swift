@@ -31,46 +31,45 @@ final class HomeContainer: ObservableObject, ContainerProtocol {
         switch intent {
         case .search(let text):
             state.text = text
-
+            
         case .searchTap:
             
             Task {
-                do {
+                
+                await homeRepository.fetchSearch(text: state.text) { [weak self] result in
                     
-                    try await homeRepository.fetchSearch(text: state.text) { [weak self] result in
-                        
-                        guard let self else {
-                            self?.state.error = CommonError.missingError.description
-                            return
-                        }
-                        
-                        switch result {
-                        case .success(let data):
-                            print("container", data)
-                            
-                            DispatchQueue.main.async { [weak self] in
-                                
-                                guard let self else {
-                                    self?.state.error = CommonError.missingError.description
-                                    return
-                                }
-                                
-                                state.shopData = data
-                            }
-                            
-                        case .failure(let error):
-                            state.error = error.description
-                        }
+                    guard let self else {
+                        self?.state.error = CommonError.missingError.description
+                        return
                     }
                     
-                } catch {
-                    
-                    state.error = CommonError.missingError.description
-                    
+                    switch result {
+                    case .success(let data):
+                        
+                        DispatchQueue.main.async { [weak self] in
+                            
+                            guard let self else {
+                                self?.state.error = CommonError.missingError.description
+                                return
+                            }
+                            
+                            state.shopData = data
+                            print(data)
+                        }
+                        
+                    case .failure(let error):
+                        
+                        DispatchQueue.main.async {
+                            self.state.error = error.description
+                        }
+                
+                    }
                 }
+                
             }
-            
         }
+        
     }
-    
 }
+
+

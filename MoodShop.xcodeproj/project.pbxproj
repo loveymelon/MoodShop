@@ -10,6 +10,8 @@
 		DF763D9D2C1827C9001F5B60 /* ShopModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF763D9C2C1827C9001F5B60 /* ShopModel.swift */; };
 		DF763DA12C18462B001F5B60 /* ShopEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF763DA02C18462B001F5B60 /* ShopEntity.swift */; };
 		DF763DA32C185DFC001F5B60 /* HomeMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF763DA22C185DFC001F5B60 /* HomeMapper.swift */; };
+		DF7F226A2C1AEA0800A182A7 /* ResponseErrorModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF7F22692C1AEA0800A182A7 /* ResponseErrorModel.swift */; };
+		DF7F226C2C1AEAF800A182A7 /* JSONManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF7F226B2C1AEAF800A182A7 /* JSONManager.swift */; };
 		DF93D8852C16C51400E9DC10 /* MoodShopApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF93D8842C16C51400E9DC10 /* MoodShopApp.swift */; };
 		DF93D8872C16C51400E9DC10 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF93D8862C16C51400E9DC10 /* ContentView.swift */; };
 		DF93D8892C16C51600E9DC10 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DF93D8882C16C51600E9DC10 /* Assets.xcassets */; };
@@ -52,6 +54,8 @@
 		DF763D9C2C1827C9001F5B60 /* ShopModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShopModel.swift; sourceTree = "<group>"; };
 		DF763DA02C18462B001F5B60 /* ShopEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShopEntity.swift; sourceTree = "<group>"; };
 		DF763DA22C185DFC001F5B60 /* HomeMapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeMapper.swift; sourceTree = "<group>"; };
+		DF7F22692C1AEA0800A182A7 /* ResponseErrorModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResponseErrorModel.swift; sourceTree = "<group>"; };
+		DF7F226B2C1AEAF800A182A7 /* JSONManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSONManager.swift; sourceTree = "<group>"; };
 		DF93D8812C16C51400E9DC10 /* MoodShop.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MoodShop.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DF93D8842C16C51400E9DC10 /* MoodShopApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoodShopApp.swift; sourceTree = "<group>"; };
 		DF93D8862C16C51400E9DC10 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -223,6 +227,8 @@
 				DF93D8C62C17058E00E9DC10 /* Router.swift */,
 				DF763D9C2C1827C9001F5B60 /* ShopModel.swift */,
 				DF763DA02C18462B001F5B60 /* ShopEntity.swift */,
+				DF7F22692C1AEA0800A182A7 /* ResponseErrorModel.swift */,
+				DF7F226B2C1AEAF800A182A7 /* JSONManager.swift */,
 			);
 			path = Network;
 			sourceTree = "<group>";
@@ -390,6 +396,7 @@
 				DFA6D3692C197FD10017CEE2 /* HomeRepositoryProtocol.swift in Sources */,
 				DF93D8872C16C51400E9DC10 /* ContentView.swift in Sources */,
 				DFA6D3722C198FA80017CEE2 /* MapperProtocol.swift in Sources */,
+				DF7F226A2C1AEA0800A182A7 /* ResponseErrorModel.swift in Sources */,
 				DF93D8C72C17058E00E9DC10 /* Router.swift in Sources */,
 				DF93D8BD2C16EF8900E9DC10 /* ContainerProtocol.swift in Sources */,
 				DFA6D36C2C1980490017CEE2 /* HomeRepository.swift in Sources */,
@@ -397,6 +404,7 @@
 				DFA6D3702C198BF00017CEE2 /* CommonError.swift in Sources */,
 				DF93D8B62C16D5FA00E9DC10 /* DynamicTextModifier.swift in Sources */,
 				DF763DA32C185DFC001F5B60 /* HomeMapper.swift in Sources */,
+				DF7F226C2C1AEAF800A182A7 /* JSONManager.swift in Sources */,
 				DF93D8BA2C16EF0700E9DC10 /* HomeContainer.swift in Sources */,
 				DF93D8852C16C51400E9DC10 /* MoodShopApp.swift in Sources */,
 			);

@@ -36,8 +36,8 @@ enum NetworkError: Error {
     case invalidURL
     case invalidResponse
     case noData
-    case failedRequest
-    case invalidData
+    case failedRequest(NaverError)
+    case decodingError
     case unowned
     
     var description: String {
@@ -50,12 +50,45 @@ enum NetworkError: Error {
             return "noData"
         case .failedRequest:
             return "failedRequest"
-        case .invalidData:
-            return "invalidData"
+        case .decodingError:
+            return "decodingError"
         case .unowned:
             return "알 수 없는 오류"
         }
     }
 }
 
-
+enum NaverError: String, Error {
+    case incorrectQuery = "SE01"
+    case invalidDisplay = "SE02"
+    case invalidStar = "SE03"
+    case invalidSort = "SE04"
+    case invalidEncode = "SE06"
+    case invalidSearch = "SE05"
+    case systemError = "SE99"
+    
+//    case errorCode(String)
+//    
+//    var description: String {
+//
+//    }
+    
+//    var description: String {
+//        switch self {
+//        case .incorrectQuery:
+//            return "incorrectQuery"
+//        case .invalidDisplay:
+//            return "invalidDisplay"
+//        case .invalidStar:
+//            return "invalidStar"
+//        case .invalidSort:
+//            return "invalidSort"
+//        case .invalidEncode:
+//            return "invalidEncode"
+//        case .invalidSearch:
+//            return "invalidSearch"
+//        case .systemError:
+//            return "systemError"
+//        }
+//    }
+}

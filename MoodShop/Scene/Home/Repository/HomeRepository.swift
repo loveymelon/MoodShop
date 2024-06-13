@@ -14,7 +14,7 @@ final class HomeRepository: HomeRepositoryProtocol {
     
     let mapper = HomeMapper() // 각 repository마다 mapper가 무조건 다 필요하지않을까 그래서 프로토콜로 명시해주는건 어떨까?
     
-    func fetchSearch(text: String, completionHandler: @escaping ((Result<ShopEntity, AppError>) -> Void)) async throws  {
+    func fetchSearch(text: String, completionHandler: @escaping ((Result<ShopEntity, AppError>) -> Void)) async {
         
         await NetworkManager.shared.search(text: text) { [weak self] result in
             
@@ -27,7 +27,8 @@ final class HomeRepository: HomeRepositoryProtocol {
             case .success(let data):
                 completionHandler(.success(mapper.dtoToEntity(data: data)))
             case .failure(let error):
-                completionHandler(.failure(.networkError(error)))
+                
+                completionHandler(.failure(error))
             }
             
         }
