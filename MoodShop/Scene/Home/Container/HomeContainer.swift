@@ -12,12 +12,14 @@ import Combine
 final class HomeContainer: ObservableObject, ContainerProtocol {
     
     enum Intent {
+        case onAppear
         case search(String)
         case searchTap
     }
     
     struct State {
         var text: String = ""
+        var shopItems: [ShopItemEntity] = []
         var shopData = ShopEntity()
         var error: String = ""
     }
@@ -29,6 +31,55 @@ final class HomeContainer: ObservableObject, ContainerProtocol {
     
     func send(_ intent: Intent) {
         switch intent {
+        case .onAppear:
+            
+            Task {
+                await homeRepository.fetchSearch(text: "옷") { [weak self] result in
+                    
+                    guard let self else {
+                        
+                        self?.state.error = CommonError.missingError.description
+                        return
+                    }
+                    
+                    switch result {
+                    case .success(let data):
+                        var tempDatas: [ShopItemEntity] = []
+        
+                        for item in data.items {
+                            tempDatas.append(item)
+                            print(item)
+                            if tempDatas.count == 3 {
+                                break
+                            }
+                        }
+                        
+                        DispatchQueue.main.async { [weak self] in
+                            
+                            guard let self else {
+                                self?.state.error = CommonError.missingError.description
+                                return
+                            }
+                            
+                            state.shopItems = tempDatas
+                            
+                        }
+                        
+                    case .failure(let error):
+                        
+                        DispatchQueue.main.async { [weak self] in
+                            guard let self else {
+                                self?.state.error = CommonError.missingError.description
+                                return
+                            }
+                            
+                            self.state.error = error.description
+                        }
+                    }
+                    
+                }
+            }
+            
         case .search(let text):
             state.text = text
             

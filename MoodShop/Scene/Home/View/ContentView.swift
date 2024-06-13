@@ -17,6 +17,10 @@ struct ContentView: View {
             VStack {
                 
             }
+            .onAppear {
+                container.send(.onAppear)
+                print(container.state.error, " aaa")
+            }
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
                 ToolbarItem(placement: .principal) {
