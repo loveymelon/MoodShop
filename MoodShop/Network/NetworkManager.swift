@@ -6,61 +6,40 @@
 //
 
 import Foundation
+import Combine
 
-final class NetworkManager {
+struct NetworkManager {
     static let shared = NetworkManager()
     
     private init() { }
     
-    func search(text: String, completionHandler: @escaping (Result<ShopModel, AppError>) -> Void) async {
+    func search(text: String) async -> AnyPublisher<ShopModel, AppError> {
         
-        do {
-            let request = try Router.search.asURLRequest(text: text)
+        return Future<ShopModel,AppError> { promise in
             
-            try await URLSession.shared.dataTask(with: request) { data, response, error in
+            Task {
                 
-                guard error == nil else {
+                do {
                     
-                    completionHandler(.failure(.networkError(.failedRequest(.incorrectQuery))))
+                    let request = try Router.search.asURLRequest(text: text)
                     
-                    return
+                    let (data, response) = try await URLSession.shared.data(for: request)
+                    
+                    try checkResponse(data: data, response: response)
+                    
+                    try promise(.success(decodeModel(data: data, type: ShopModel.self)))
+                    
+                } catch {
+                    print(error)
+                    promise(.failure(.networkError(.unowned)))
                 }
                 
-                guard let data = data, let response = response as? HTTPURLResponse, (200..<300) ~= response.statusCode else {
-                        
-                    guard let urlResponse = response as? HTTPURLResponse else { 
-                        completionHandler(.failure(.commonError(.missingError)))
-                        return
-                    }
-                    
-                    switch JSONManager.shared.decoder(type: ResponseErrorModel.self, data: data!) {
-                    case .success(let data):
-                        
-                        let naverError = NaverError(rawValue: data.errorCode)
-                        
-                        completionHandler(.failure(.networkError(.failedRequest(naverError!))))
-                    case .failure(let error):
-                        completionHandler(.failure(.networkError(error)))
-                    }
-                    
-//                    try checkNetError(response: response)
-                    
-                    completionHandler(.failure(.networkError(.invalidResponse)))
-                    return
-                }
-                
-                guard let output = try? JSONDecoder().decode(ShopModel.self, from: data) else {
-                    completionHandler(.failure(.networkError(.decodingError)))
-                    return
-                }
-                
-                completionHandler(.success(output))
-                
-            }.resume()
+            }
             
-        } catch {
-            completionHandler(.failure(.networkError(.unowned)))
         }
+        .eraseToAnyPublisher()
+        
+        
         
     }
     
@@ -75,4 +54,33 @@ extension NetworkManager {
         print(urlResponse.statusCode)
         
     }
+    
+    private func checkResponse(data: Data, response: URLResponse) throws {
+        
+        guard let response = response as? HTTPURLResponse, (200..<300) ~= response.statusCode else {
+            
+            guard let urlResponse = response as? HTTPURLResponse else {
+                throw CommonError.missingError
+            }
+            
+            let naverError = try decodeModel(data: data, type: ResponseErrorModel.self)
+            
+            throw NetworkError.failedRequest(NaverError(rawValue: naverError.errorCode)!)
+            
+        }
+        
+    }
+    
+    private func decodeModel<T: Decodable>(data: Data, type: T.Type) throws -> T {
+        let result = JSONManager.shared.decoder(type: type, data: data)
+        
+        switch result {
+        case .success(let data):
+            return data
+        case .failure(let error):
+            throw error
+        }
+        
+    }
+    
 }
