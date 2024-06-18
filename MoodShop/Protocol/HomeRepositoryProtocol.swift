@@ -8,5 +8,5 @@
 import Foundation
 
 protocol HomeRepositoryProtocol {
-    func fetchSearch(text: String, completionHandler: @escaping ((Result<ShopEntity, AppError>) -> Void)) async throws 
+    func fetchSearch(text: String) async throws
 }

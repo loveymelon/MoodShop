@@ -8,6 +8,7 @@
 import Foundation
 import Combine
 
+// session 열기
 struct NetworkManager {
     static let shared = NetworkManager()
     
@@ -39,8 +40,6 @@ struct NetworkManager {
         }
         .eraseToAnyPublisher()
         
-        
-        
     }
     
 }
@@ -59,7 +58,7 @@ extension NetworkManager {
         
         guard let response = response as? HTTPURLResponse, (200..<300) ~= response.statusCode else {
             
-            guard let urlResponse = response as? HTTPURLResponse else {
+            guard response is HTTPURLResponse else {
                 throw CommonError.missingError
             }
             
