@@ -8,5 +8,6 @@
 import Foundation
 
 protocol HomeRepositoryProtocol {
-    func fetchSearch(text: String) async throws
+    func fetchSearch(text: String, display: String) async
 }
+

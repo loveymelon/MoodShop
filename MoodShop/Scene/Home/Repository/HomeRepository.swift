@@ -19,9 +19,9 @@ final class HomeRepository: HomeRepositoryProtocol {
     
     private var cancellables = Set<AnyCancellable>()
     
-    func fetchSearch(text: String) async throws {
+    func fetchSearch(text: String, display: String = "10") async {
         
-        await NetworkManager.shared.search(text: text)
+        await NetworkManager.shared.search(text: text, display: display)
             .receive(on: RunLoop.main)
             .sink { [weak self] completion in
                 

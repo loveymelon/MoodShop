@@ -28,56 +28,35 @@ final class HomeContainer: ObservableObject, ContainerProtocol {
     
     @Published
     private(set) var state: State = State()
+    private var cancellables = Set<AnyCancellable>()
     
     func send(_ intent: Intent) {
         switch intent {
         case .onAppear:
             
             Task {
-                await homeRepository.fetchSearch(text: "옷") { [weak self] result in
-                    
-                    guard let self else {
+                
+                await homeRepository.fetchSearch(text: "옷", display: "3")
+                
+                homeRepository.searchResult
+                    .sink { [weak self] result in
                         
-                        self?.state.error = CommonError.missingError.description
-                        return
-                    }
-                    
-                    switch result {
-                    case .success(let data):
-                        var tempDatas: [ShopItemEntity] = []
-        
-                        for item in data.items {
-                            tempDatas.append(item)
-                            print(item)
-                            if tempDatas.count == 3 {
-                                break
-                            }
-                        }
-                        
-                        DispatchQueue.main.async { [weak self] in
+                        guard let self else {
                             
-                            guard let self else {
-                                self?.state.error = CommonError.missingError.description
-                                return
-                            }
-                            
-                            state.shopItems = tempDatas
+                            self?.state.error = CommonError.missingError.description
+                            return
                             
                         }
                         
-                    case .failure(let error):
-                        
-                        DispatchQueue.main.async { [weak self] in
-                            guard let self else {
-                                self?.state.error = CommonError.missingError.description
-                                return
-                            }
-                            
-                            self.state.error = error.description
+                        switch result {
+                        case .success(let data):
+                            print(data)
+                            state.shopItems = data.items
+                        case .failure(let error):
+                            state.error = error.description
                         }
                     }
-                    
-                }
+                    .store(in: &cancellables)
             }
             
         case .search(let text):
@@ -87,35 +66,27 @@ final class HomeContainer: ObservableObject, ContainerProtocol {
             
             Task {
                 
-                await homeRepository.fetchSearch(text: state.text) { [weak self] result in
-                    
-                    guard let self else {
-                        self?.state.error = CommonError.missingError.description
-                        return
-                    }
-                    
-                    switch result {
-                    case .success(let data):
-                        
-                        DispatchQueue.main.async { [weak self] in
-                            
-                            guard let self else {
-                                self?.state.error = CommonError.missingError.description
-                                return
-                            }
-                            
-                            state.shopData = data
-                            print(data)
-                        }
-                        
-                    case .failure(let error):
-                        
-                        DispatchQueue.main.async {
-                            self.state.error = error.description
-                        }
+                await homeRepository.fetchSearch(text: state.text)
                 
+                homeRepository.searchResult
+                    .sink { [weak self] result in
+                        
+                        guard let self else {
+                            
+                            self?.state.error = CommonError.missingError.description
+                            return
+                            
+                        }
+                        
+                        switch result {
+                        case .success(let data):
+                            state.shopItems = data.items
+                        case .failure(let error):
+                            state.error = error.description
+                        }
+                        
                     }
-                }
+                    .store(in: &cancellables)
                 
             }
         }
