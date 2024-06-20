@@ -17,12 +17,15 @@ final class HomeRepository: HomeRepositoryProtocol {
 //    var a = CurrentValueSubject<String>(value: "a")
     private let mapper = HomeMapper() // 각 repository마다 mapper가 무조건 다 필요하지않을까 그래서 프로토콜로 명시해주는건 어떨까?
     
-    private var cancellables = Set<AnyCancellable>()
+    private var cancellables:Set<AnyCancellable>
+    
+    init(_ cancellables: Set<AnyCancellable>) {
+        self.cancellables = cancellables
+    }
     
     func fetchSearch(text: String, display: String = "10") async {
         
         await NetworkManager.shared.search(text: text, display: display)
-            .receive(on: RunLoop.main)
             .sink { [weak self] completion in
                 
                 guard let self else { return }
@@ -39,8 +42,10 @@ final class HomeRepository: HomeRepositoryProtocol {
                 guard let self else { return }
                 
                 let entity = mapper.dtoToEntity(data: model)
+                print(entity)
                 searchResult.send(.success(entity))
             }
+//            .cancel()
             .store(in: &cancellables)
         
     }

@@ -24,80 +24,66 @@ final class HomeContainer: ObservableObject, ContainerProtocol {
         var shopData = ShopEntity()
         var error: String = ""
         var imageIndex: Int = 0
+        var categoryItems: [ShopItemEntity] = []
     }
-    
-    let homeRepository = HomeRepository()
     
     @Published
     private(set) var state: State = State()
     private var cancellables = Set<AnyCancellable>()
     
+    lazy var homeRepository = HomeRepository(cancellables)
+    
     func send(_ intent: Intent) {
         switch intent {
         case .onAppear:
-            
-            Task {
                 
-                await homeRepository.fetchSearch(text: "옷", display: "3")
-                
-                homeRepository.searchResult
-                    .sink { [weak self] result in
-                        
-                        guard let self else {
-                            
-                            self?.state.error = CommonError.missingError.description
-                            return
-                            
-                        }
-                        
-                        switch result {
-                        case .success(let data):
-                            print(data)
-                            state.shopItems = data.items
-                        case .failure(let error):
-                            state.error = error.description
-                        }
-                    }
-                    .store(in: &cancellables)
-            }
+            searchNetwork(text: "옷", display: "3")
+            searchNetwork(text: "아웃도어")
             
         case .search(let text):
             state.text = text
             
         case .searchTap:
             
-            Task {
-                
-                await homeRepository.fetchSearch(text: state.text)
-                
-                homeRepository.searchResult
-                    .sink { [weak self] result in
-                        
-                        guard let self else {
-                            
-                            self?.state.error = CommonError.missingError.description
-                            return
-                            
-                        }
-                        
-                        switch result {
-                        case .success(let data):
-                            state.shopItems = data.items
-                        case .failure(let error):
-                            state.error = error.description
-                        }
-                        
-                    }
-                    .store(in: &cancellables)
-                
-            }
+            searchNetwork(text: state.text)
             
         case .change:
             state.imageIndex = ( state.imageIndex + 1 ) % 3
-            print(state.shopItems[state.imageIndex].image)
         }
         
     }
 }
 
-
+extension HomeContainer {
+    private func searchNetwork(text: String, display: String = "10") {
+        Task {
+            try await Task.sleep(nanoseconds:100_000)
+            await homeRepository.fetchSearch(text: text, display: display)
+            
+            homeRepository.searchResult
+                .receive(on: RunLoop.main)
+                .sink { [weak self] result in
+                    
+                    guard let self else {
+                        
+                        self?.state.error = CommonError.missingError.description
+                        return
+                        
+                    }
+                    
+                    switch result {
+                    case .success(let data):
+                        if text == "옷" {
+                            state.shopItems = data.items
+                        } else {
+                            state.categoryItems = data.items
+                        }
+                    case .failure(let error):
+                        state.error = error.description
+                    }
+                }
+//                .cancel()
+                .store(in: &cancellables)
+        }
+    }
+}

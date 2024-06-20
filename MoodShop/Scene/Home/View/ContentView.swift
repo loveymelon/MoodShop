@@ -41,13 +41,30 @@ struct ContentView: View {
                 .frame(height: 220)
                 .tabViewStyle(.page)
                 
-                Text("Outerwear")
-                    .setTextStyle(size: 20, design: .monospaced, weight: .heavy)
+                HStack {
+                    Text("Outerwear")
+                        .setTextStyle(size: 20, design: .monospaced, weight: .heavy)
+                        .padding(.leading, 10)
+                        .background(.red)
+                    
+                    Spacer()
+                }
+                .padding(.bottom, 10)
+                
+                LazyHStack {
+                    
+                    ForEach(container.state.categoryItems, id: \.productId) { item in
+                        KFImage(item.image)
+                            .resizable()
+                            .clipShape(RoundedRectangle(cornerRadius: 10))
+                            .padding(.all, 10)
+                    }
+                    
+                }
                 
             }
             .onAppear {
                 container.send(.onAppear)
-                print(container.state.error, " aaa")
             }
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
