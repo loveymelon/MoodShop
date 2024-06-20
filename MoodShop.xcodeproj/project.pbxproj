@@ -31,6 +31,7 @@
 		DFA6D36C2C1980490017CEE2 /* HomeRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFA6D36B2C1980490017CEE2 /* HomeRepository.swift */; };
 		DFA6D3702C198BF00017CEE2 /* CommonError.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFA6D36F2C198BF00017CEE2 /* CommonError.swift */; };
 		DFA6D3722C198FA80017CEE2 /* MapperProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFA6D3712C198FA80017CEE2 /* MapperProtocol.swift */; };
+		DFA711E62C22A39400D3936A /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = DFA711E52C22A39400D3936A /* Kingfisher */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -85,6 +86,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DFA711E62C22A39400D3936A /* Kingfisher in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -274,6 +276,9 @@
 			dependencies = (
 			);
 			name = MoodShop;
+			packageProductDependencies = (
+				DFA711E52C22A39400D3936A /* Kingfisher */,
+			);
 			productName = MoodShop;
 			productReference = DF93D8812C16C51400E9DC10 /* MoodShop.app */;
 			productType = "com.apple.product-type.application";
@@ -346,6 +351,9 @@
 				Base,
 			);
 			mainGroup = DF93D8782C16C51400E9DC10;
+			packageReferences = (
+				DFA711E42C22A39400D3936A /* XCRemoteSwiftPackageReference "Kingfisher" */,
+			);
 			productRefGroup = DF93D8822C16C51400E9DC10 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -738,6 +746,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		DFA711E42C22A39400D3936A /* XCRemoteSwiftPackageReference "Kingfisher" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/onevcat/Kingfisher.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 7.12.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		DFA711E52C22A39400D3936A /* Kingfisher */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = DFA711E42C22A39400D3936A /* XCRemoteSwiftPackageReference "Kingfisher" */;
+			productName = Kingfisher;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = DF93D8792C16C51400E9DC10 /* Project object */;
 }

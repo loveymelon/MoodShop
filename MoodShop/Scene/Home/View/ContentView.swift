@@ -6,15 +6,43 @@
 //
 
 import SwiftUI
+import Kingfisher
 
 struct ContentView: View {
     
     @StateObject
     var container = HomeContainer()
     
+    let timer = Timer.publish(every: 3, on: .main, in: .common).autoconnect()
+    
     var body: some View {
         NavigationView {
-            VStack {
+            
+            ScrollView(.vertical) {
+                TabView {
+                    ForEach(0..<container.state.shopItems.count, id: \.self) { index in
+                        
+                        KFImage(container.state.shopItems[index].image)
+                            .resizable()
+                            .clipShape(RoundedRectangle(cornerRadius: 10))
+                            .padding(.all, 10)
+                            .onAppear {
+                                print(container.state.shopItems.count)
+                                print(index)
+                            }
+                    }
+                }
+                .background(
+                    LinearGradient(colors: [
+                        Color.red.opacity(0.1), Color.blue.opacity(0.2)
+                    ], startPoint: .topLeading, endPoint: .bottomTrailing)
+                )
+                .frame(maxWidth: .infinity)
+                .frame(height: 220)
+                .tabViewStyle(.page)
+                
+                Text("Outerwear")
+                    .setTextStyle(size: 20, design: .monospaced, weight: .heavy)
                 
             }
             .onAppear {
@@ -25,7 +53,7 @@ struct ContentView: View {
             .toolbar {
                 ToolbarItem(placement: .principal) {
                     Text("Mood Shop")
-                        .setTextStyle()
+                        .setTextStyle(size: 30, design: .serif, weight: .semibold)
                 }
             }
             

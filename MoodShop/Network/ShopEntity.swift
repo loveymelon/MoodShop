@@ -26,10 +26,10 @@ struct ShopEntity {
     }
 }
 
-struct ShopItemEntity {
+struct ShopItemEntity: Hashable {
     let title: String
     let link: String
-    let image: String
+    let image: URL?
     let lprice: Int
     let mallName: String
     let productId: String

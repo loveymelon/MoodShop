@@ -15,6 +15,7 @@ final class HomeContainer: ObservableObject, ContainerProtocol {
         case onAppear
         case search(String)
         case searchTap
+        case change
     }
     
     struct State {
@@ -22,6 +23,7 @@ final class HomeContainer: ObservableObject, ContainerProtocol {
         var shopItems: [ShopItemEntity] = []
         var shopData = ShopEntity()
         var error: String = ""
+        var imageIndex: Int = 0
     }
     
     let homeRepository = HomeRepository()
@@ -89,6 +91,10 @@ final class HomeContainer: ObservableObject, ContainerProtocol {
                     .store(in: &cancellables)
                 
             }
+            
+        case .change:
+            state.imageIndex = ( state.imageIndex + 1 ) % 3
+            print(state.shopItems[state.imageIndex].image)
         }
         
     }

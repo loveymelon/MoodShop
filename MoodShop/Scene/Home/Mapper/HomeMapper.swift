@@ -23,7 +23,9 @@ class HomeMapper: MapperProtocol {
 extension HomeMapper {
     private func toShopItemEntity(data: DTO) -> [ShopItemEntity] {
         return data.items.map { datas in
-            ShopItemEntity(title: datas.title, link: datas.link, image: datas.image, lprice: Int(datas.lprice) ?? 0, mallName: datas.mallName, productId: datas.productId)
+            let imageUrl = URL(string: datas.image)
+            
+            return ShopItemEntity(title: datas.title, link: datas.link, image: imageUrl, lprice: Int(datas.lprice) ?? 0, mallName: datas.mallName, productId: datas.productId)
         }
     }
 }
