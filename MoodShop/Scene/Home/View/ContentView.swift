@@ -55,10 +55,15 @@ struct ContentView: View {
                     LazyHStack {
                         
                         ForEach(container.state.categoryItems, id: \.productId) { item in
-                            KFImage(item.image)
-                                .resizable()
-                                .padding(.all, 10)
-                                .frame(width: UIScreen.main.bounds.width)
+                            VStack {
+                                KFImage(item.image)
+                                    .resizable()
+                                    .padding(.all, 10)
+                                    .frame(width: UIScreen.main.bounds.width / 2)
+                                Text(item.title.htmlEscaped)
+                                Text("\(item.lprice)")
+                            }
+                            
                         }
                         
                     }

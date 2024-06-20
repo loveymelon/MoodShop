@@ -74,7 +74,7 @@ extension HomeContainer {
                     case .success(let data):
                         if text == "옷" {
                             print(data.items)
-                            state.shopItems = data.items
+//                            state.shopItems = data.items
                         } else {
                             state.categoryItems = data.items
                         }
