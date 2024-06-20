@@ -27,8 +27,8 @@ struct ContentView: View {
                             .clipShape(RoundedRectangle(cornerRadius: 10))
                             .padding(.all, 10)
                             .onAppear {
-                                print(container.state.shopItems.count)
-                                print(index)
+//                                print(container.state.shopItems.count)
+//                                print(index)
                             }
                     }
                 }
@@ -51,17 +51,22 @@ struct ContentView: View {
                 }
                 .padding(.bottom, 10)
                 
-                LazyHStack {
-                    
-                    ForEach(container.state.categoryItems, id: \.productId) { item in
-                        KFImage(item.image)
-                            .resizable()
-                            .clipShape(RoundedRectangle(cornerRadius: 10))
-                            .padding(.all, 10)
+                ScrollView(.horizontal) {
+                    LazyHStack {
+                        
+                        ForEach(container.state.categoryItems, id: \.productId) { item in
+                            KFImage(item.image)
+                                .resizable()
+                                .padding(.all, 10)
+                                .frame(width: UIScreen.main.bounds.width)
+                        }
+                        
                     }
-                    
+
                 }
-                
+                .frame(maxWidth: .infinity)
+                .frame(height: 300)
+                                
             }
             .onAppear {
                 container.send(.onAppear)

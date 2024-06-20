@@ -57,7 +57,6 @@ final class HomeContainer: ObservableObject, ContainerProtocol {
 extension HomeContainer {
     private func searchNetwork(text: String, display: String = "10") {
         Task {
-            try await Task.sleep(nanoseconds:100_000)
             await homeRepository.fetchSearch(text: text, display: display)
             
             homeRepository.searchResult
@@ -74,6 +73,7 @@ extension HomeContainer {
                     switch result {
                     case .success(let data):
                         if text == "옷" {
+                            print(data.items)
                             state.shopItems = data.items
                         } else {
                             state.categoryItems = data.items
@@ -82,7 +82,6 @@ extension HomeContainer {
                         state.error = error.description
                     }
                 }
-//                .cancel()
                 .store(in: &cancellables)
         }
     }

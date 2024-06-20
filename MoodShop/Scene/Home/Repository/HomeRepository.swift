@@ -45,7 +45,6 @@ final class HomeRepository: HomeRepositoryProtocol {
                 print(entity)
                 searchResult.send(.success(entity))
             }
-//            .cancel()
             .store(in: &cancellables)
         
     }
