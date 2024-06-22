@@ -36,16 +36,20 @@ final class HomeContainer: ObservableObject, ContainerProtocol {
     func send(_ intent: Intent) {
         switch intent {
         case .onAppear:
-                
-            searchNetwork(text: "옷", display: "3")
-            searchNetwork(text: "아웃도어")
+            
+            Task {
+                await searchNetwork(text: "옷", display: "3")
+                await searchNetwork(text: "아웃도어")
+            }
             
         case .search(let text):
             state.text = text
             
         case .searchTap:
             
-            searchNetwork(text: state.text)
+            Task {
+                await searchNetwork(text: state.text)
+            }
             
         case .change:
             state.imageIndex = ( state.imageIndex + 1 ) % 3
@@ -55,34 +59,31 @@ final class HomeContainer: ObservableObject, ContainerProtocol {
 }
 
 extension HomeContainer {
-    private func searchNetwork(text: String, display: String = "10") {
-        Task {
-            await homeRepository.fetchSearch(text: text, display: display)
-            
-            homeRepository.searchResult
-                .receive(on: RunLoop.main)
-                .sink { [weak self] result in
-                    
-                    guard let self else {
-                        
-                        self?.state.error = CommonError.missingError.description
-                        return
-                        
-                    }
-                    
-                    switch result {
-                    case .success(let data):
-                        if text == "옷" {
-                            print(data.items)
-//                            state.shopItems = data.items
-                        } else {
-                            state.categoryItems = data.items
-                        }
-                    case .failure(let error):
-                        state.error = error.description
-                    }
+    private func searchNetwork(text: String, display: String = "10") async {
+        
+        await homeRepository.fetchSearch(text: text, display: display)
+            .receive(on: RunLoop.main)
+            .sink(receiveCompletion: { [weak self] completion in
+                
+                guard let self else { return }
+                
+                switch completion {
+                case .finished:
+                    print("finish")
+                case .failure(let error):
+                    state.error = error.description
                 }
-                .store(in: &cancellables)
-        }
+            }, receiveValue: { [weak self] data in
+                
+                guard let self else { return }
+                
+                if text == "옷" {
+                    state.shopItems = data.items
+                } else {
+                    state.categoryItems = data.items
+                }
+                
+            }).store(in: &cancellables)
+
     }
 }

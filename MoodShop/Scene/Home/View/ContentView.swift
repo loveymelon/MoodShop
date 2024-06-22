@@ -30,6 +30,8 @@ struct ContentView: View {
 //                                print(container.state.shopItems.count)
 //                                print(index)
                             }
+                    }.onChange(of: container.state.shopItems) { newValue in
+                        print("newnewnew", newValue)
                     }
                 }
                 .background(
@@ -45,11 +47,10 @@ struct ContentView: View {
                     Text("Outerwear")
                         .setTextStyle(size: 20, design: .monospaced, weight: .heavy)
                         .padding(.leading, 10)
-                        .background(.red)
                     
                     Spacer()
                 }
-                .padding(.bottom, 10)
+                .padding(.top, 30)
                 
                 ScrollView(.horizontal) {
                     LazyHStack {
@@ -58,23 +59,18 @@ struct ContentView: View {
                             VStack {
                                 KFImage(item.image)
                                     .resizable()
+                                    .clipShape(RoundedRectangle(cornerRadius: 10))
                                     .padding(.all, 10)
-                                    .frame(width: UIScreen.main.bounds.width / 2)
-                                Text(item.title.htmlEscaped)
+                                    .frame(width: UIScreen.main.bounds.width / 2.5, height: 200)
                                 Text("\(item.lprice)")
                             }
-                            
                         }
-                        
                     }
 
                 }
                 .frame(maxWidth: .infinity)
-                .frame(height: 300)
+
                                 
-            }
-            .onAppear {
-                container.send(.onAppear)
             }
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
@@ -84,6 +80,9 @@ struct ContentView: View {
                 }
             }
             
+        }
+        .onAppear {
+            container.send(.onAppear)
         }
         .searchable(text: Binding(get: {
             container.state.text

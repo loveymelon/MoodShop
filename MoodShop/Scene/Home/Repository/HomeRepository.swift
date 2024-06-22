@@ -13,39 +13,25 @@ import Combine
 // 코드의 가독성 및 관리성이 용이해진다.
 final class HomeRepository: HomeRepositoryProtocol {
     
-    let searchResult = PassthroughSubject<Result<ShopEntity, AppError>, Never>() // publishSubject
-//    var a = CurrentValueSubject<String>(value: "a")
-    private let mapper = HomeMapper() // 각 repository마다 mapper가 무조건 다 필요하지않을까 그래서 프로토콜로 명시해주는건 어떨까?
+     // 각 repository마다 mapper가 무조건 다 필요하지않을까 그래서 프로토콜로 명시해주는건 어떨까?
     
-    private var cancellables:Set<AnyCancellable>
+    let mapper = HomeMapper()
+    
+    private var cancellables: Set<AnyCancellable>
     
     init(_ cancellables: Set<AnyCancellable>) {
         self.cancellables = cancellables
     }
     
-    func fetchSearch(text: String, display: String = "10") async {
+    func fetchSearch(text: String, display: String = "10") async -> AnyPublisher<ShopEntity, AppError> {
         
-        await NetworkManager.shared.search(text: text, display: display)
-            .sink { [weak self] completion in
-                
-                guard let self else { return }
-                
-                switch completion {
-                    
-                case .finished:
-                    print("finish")
-                case .failure(let error):
-                    searchResult.send(.failure(error))
-                }
-                
-            } receiveValue: { [weak self] model in
-                guard let self else { return }
-                
-                let entity = mapper.dtoToEntity(data: model)
-                print(entity)
-                searchResult.send(.success(entity))
-            }
-            .store(in: &cancellables)
         
+        
+        return await NetworkManager.shared.search(text: text, display: display)
+            .map { [weak self] result in
+                guard let self else { return ShopEntity() }
+                return mapper.dtoToEntity(data: result) }
+            .eraseToAnyPublisher()
+            
     }
 }

@@ -8,24 +8,27 @@
 import Foundation
 
 extension String {
-    
-    var htmlEscaped: String {
-        guard let encodedData = self.data(using: .utf8) else {
-            return self
+    var htmlToAttributedString: NSAttributedString? {
+        guard let data = data(using: .utf8) else {
+            print("Error: Unable to convert string to data.")
+            return nil
         }
-        
-        let options: [NSAttributedString.DocumentReadingOptionKey: Any] = [
-            .documentType: NSAttributedString.DocumentType.html,
-            .characterEncoding: String.Encoding.utf8.rawValue
-        ]
-        
         do {
-            let attributed = try NSAttributedString(data: encodedData,
-                                                    options: options,
-                                                    documentAttributes: nil)
-            return attributed.string
+            return try NSAttributedString(
+                data: data,
+                options: [
+                    .documentType: NSAttributedString.DocumentType.html,
+                    .characterEncoding: String.Encoding.utf8.rawValue
+                ],
+                documentAttributes: nil
+            )
         } catch {
-            return self
+            print("Error: \(error)")
+            return nil
         }
+    }
+
+    var htmlStripped: String {
+        return htmlToAttributedString?.string ?? self
     }
 }
