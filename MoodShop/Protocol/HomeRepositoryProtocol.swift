@@ -8,6 +8,6 @@
 import Combine
 
 protocol HomeRepositoryProtocol {
-    func fetchSearch(text: String, display: String) async -> AnyPublisher<ShopEntity, AppError>
+    func fetchSearch(text: String, categoryType: CategoryEnum, display: String) async -> AnyPublisher<ShopEntity, AppError>
 }
 

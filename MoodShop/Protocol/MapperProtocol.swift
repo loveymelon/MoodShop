@@ -11,5 +11,4 @@ protocol MapperProtocol {
     associatedtype Entity
     associatedtype DTO
     
-    func dtoToEntity(data: DTO) -> Entity
 }

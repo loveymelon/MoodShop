@@ -33,4 +33,5 @@ struct ShopItemEntity: Hashable {
     let lprice: Int
     let mallName: String
     let productId: String
+    let categoryType: CategoryEnum
 }

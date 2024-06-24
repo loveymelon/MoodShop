@@ -24,34 +24,12 @@ struct ContentView: View {
                     container.state.shopItems
                 }, set: { _ in  }))
                 
-                HStack {
-                    Text("Outerwear")
-                        .setTextStyle(size: 20, design: .monospaced, weight: .heavy)
-                        .padding(.leading, 10)
-                    
-                    Spacer()
+                ForEach(CategoryEnum.allCases, id: \.self) { item in
+                    CategoryView(categoryItems: Binding(get: {
+                        container.state.categoryItems
+                    }, set: { _ in }), categoryType: item)
                 }
-                .padding(.top, 30)
-                
-                ScrollView(.horizontal) {
-                    LazyHStack {
-                        
-                        ForEach(container.state.categoryItems, id: \.productId) { item in
-                            VStack {
-                                KFImage(item.image)
-                                    .resizable()
-                                    .clipShape(RoundedRectangle(cornerRadius: 10))
-                                    .padding(.all, 10)
-                                    .frame(width: UIScreen.main.bounds.width / 2.5, height: 200)
-                                Text("\(item.lprice)")
-                            }
-                        }
-                    }
 
-                }
-                .frame(maxWidth: .infinity)
-
-                                
             }
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {

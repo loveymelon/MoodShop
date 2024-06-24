@@ -31,7 +31,7 @@ final class HomeContainer: ObservableObject, ContainerProtocol {
     private(set) var state: State = State()
     private var cancellables = Set<AnyCancellable>()
     
-    lazy var homeRepository = HomeRepository(cancellables)
+    private var homeRepository = HomeRepository()
     
     func send(_ intent: Intent) {
         switch intent {
@@ -39,8 +39,13 @@ final class HomeContainer: ObservableObject, ContainerProtocol {
             
             Task {
                 await searchNetwork(text: "옷", display: "3")
-                await searchNetwork(text: "아웃도어")
+
+                for item in CategoryEnum.allCases {
+                    await searchNetwork(text: item.rawValue, categoryEnum: item)
+                }
             }
+            
+            
             
         case .search(let text):
             state.text = text
@@ -59,9 +64,9 @@ final class HomeContainer: ObservableObject, ContainerProtocol {
 }
 
 extension HomeContainer {
-    private func searchNetwork(text: String, display: String = "10") async {
+    private func searchNetwork(text: String, categoryEnum: CategoryEnum = .outerwear, display: String = "10") async {
         
-        await homeRepository.fetchSearch(text: text, display: display)
+        await homeRepository.fetchSearch(text: text, categoryType: categoryEnum, display: display)
             .receive(on: RunLoop.main)
             .sink(receiveCompletion: { [weak self] completion in
                 
