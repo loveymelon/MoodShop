@@ -7,7 +7,7 @@
 
 import Foundation
 
-class HomeMapper: MapperProtocol {
+class HomeMapper {
 
     typealias Entity = ShopEntity
     typealias DTO = ShopModel
