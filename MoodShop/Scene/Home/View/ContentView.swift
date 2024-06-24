@@ -24,12 +24,21 @@ struct ContentView: View {
                     container.state.shopItems
                 }, set: { _ in  }))
                 
-                ForEach(CategoryEnum.allCases, id: \.self) { item in
-                    CategoryView(categoryItems: Binding(get: {
-                        container.state.categoryItems
-                    }, set: { _ in }), categoryType: item)
+                ForEach(CategoryEnum.allCases, id: \.self) { cases in
+                    
+                    if let items = container.state.categoryItems[cases] {
+                        
+                        CategoryView(categoryItems: items, productName: cases.rawValue)
+                        
+                    }
                 }
-
+                
+//                ForEach(Array(container.state.categoryItems.enumerated()), id: \.element.value.self) { index, model in
+//                    CategoryView(categoryItems: Binding(get: {
+//                        container.state.categoryItems[model.key]!
+//                    }, set: { _ in }), text: model.key.rawValue)
+//                }
+                
             }
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {

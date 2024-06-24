@@ -24,7 +24,7 @@ final class HomeContainer: ObservableObject, ContainerProtocol {
         var shopData = ShopEntity()
         var error: String = ""
         var imageIndex: Int = 0
-        var categoryItems: [ShopItemEntity] = []
+        var categoryItems: [CategoryEnum: [ShopItemEntity]] = [:]
     }
     
     @Published
@@ -66,7 +66,7 @@ final class HomeContainer: ObservableObject, ContainerProtocol {
 extension HomeContainer {
     private func searchNetwork(text: String, categoryEnum: CategoryEnum = .outerwear, display: String = "10") async {
         
-        await homeRepository.fetchSearch(text: text, categoryType: categoryEnum, display: display)
+        await homeRepository.fetchSearch(text: text, display: display)
             .receive(on: RunLoop.main)
             .sink(receiveCompletion: { [weak self] completion in
                 
@@ -85,7 +85,7 @@ extension HomeContainer {
                 if text == "옷" {
                     state.shopItems = data.items
                 } else {
-                    state.categoryItems = data.items
+                    state.categoryItems[categoryEnum] = data.items
                 }
                 
             }).store(in: &cancellables)

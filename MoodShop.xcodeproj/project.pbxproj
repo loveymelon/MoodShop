@@ -11,6 +11,7 @@
 		DF5786492C2930480015E105 /* CategoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF5786482C2930480015E105 /* CategoryView.swift */; };
 		DF57864B2C2930E70015E105 /* CategoryEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF57864A2C2930E70015E105 /* CategoryEnum.swift */; };
 		DF57864D2C29494D0015E105 /* Entity.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF57864C2C29494D0015E105 /* Entity.swift */; };
+		DF57864F2C2964100015E105 /* MapperProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF57864E2C2964100015E105 /* MapperProtocol.swift */; };
 		DF763D9D2C1827C9001F5B60 /* ShopModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF763D9C2C1827C9001F5B60 /* ShopModel.swift */; };
 		DF763DA12C18462B001F5B60 /* ShopEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF763DA02C18462B001F5B60 /* ShopEntity.swift */; };
 		DF763DA32C185DFC001F5B60 /* HomeMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF763DA22C185DFC001F5B60 /* HomeMapper.swift */; };
@@ -59,6 +60,7 @@
 		DF5786482C2930480015E105 /* CategoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryView.swift; sourceTree = "<group>"; };
 		DF57864A2C2930E70015E105 /* CategoryEnum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryEnum.swift; sourceTree = "<group>"; };
 		DF57864C2C29494D0015E105 /* Entity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Entity.swift; sourceTree = "<group>"; };
+		DF57864E2C2964100015E105 /* MapperProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapperProtocol.swift; sourceTree = "<group>"; };
 		DF763D9C2C1827C9001F5B60 /* ShopModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShopModel.swift; sourceTree = "<group>"; };
 		DF763DA02C18462B001F5B60 /* ShopEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShopEntity.swift; sourceTree = "<group>"; };
 		DF763DA22C185DFC001F5B60 /* HomeMapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeMapper.swift; sourceTree = "<group>"; };
@@ -226,6 +228,7 @@
 				DF93D8BC2C16EF8900E9DC10 /* ContainerProtocol.swift */,
 				DF93D8C12C16FEC300E9DC10 /* RouterProtocol.swift */,
 				DF57864C2C29494D0015E105 /* Entity.swift */,
+				DF57864E2C2964100015E105 /* MapperProtocol.swift */,
 			);
 			path = Protocol;
 			sourceTree = "<group>";
@@ -424,6 +427,7 @@
 				DF5786472C292D070015E105 /* HeaderView.swift in Sources */,
 				DF5786492C2930480015E105 /* CategoryView.swift in Sources */,
 				DF57864D2C29494D0015E105 /* Entity.swift in Sources */,
+				DF57864F2C2964100015E105 /* MapperProtocol.swift in Sources */,
 				DF7F226A2C1AEA0800A182A7 /* ResponseErrorModel.swift in Sources */,
 				DF93D8C72C17058E00E9DC10 /* Router.swift in Sources */,
 				DF93D8BD2C16EF8900E9DC10 /* ContainerProtocol.swift in Sources */,

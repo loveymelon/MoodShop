@@ -10,14 +10,13 @@ import Kingfisher
 
 struct CategoryView: View {
     
-    @Binding
     var categoryItems: [ShopItemEntity]
-    var categoryType: CategoryEnum
+    var productName: String
     
     var body: some View {
         
         HStack {
-            Text(categoryType.rawValue)
+            Text(productName)
                 .setTextStyle(size: 20, design: .monospaced, weight: .heavy)
                 .padding(.leading, 10)
             
@@ -35,6 +34,9 @@ struct CategoryView: View {
                             .padding(.all, 10)
                             .frame(width: UIScreen.main.bounds.width / 2.5, height: 200)
                         Text("\(item.lprice)")
+                    }
+                    .onTapGesture {
+                        print("tap")
                     }
                 }
             }
