@@ -13,8 +13,6 @@ struct ContentView: View {
     @StateObject
     var container = HomeContainer()
     
-    let timer = Timer.publish(every: 3, on: .main, in: .common).autoconnect()
-    
     var body: some View {
         NavigationView {
             
@@ -32,12 +30,6 @@ struct ContentView: View {
                         
                     }
                 }
-                
-//                ForEach(Array(container.state.categoryItems.enumerated()), id: \.element.value.self) { index, model in
-//                    CategoryView(categoryItems: Binding(get: {
-//                        container.state.categoryItems[model.key]!
-//                    }, set: { _ in }), text: model.key.rawValue)
-//                }
                 
             }
             .navigationBarTitleDisplayMode(.inline)
