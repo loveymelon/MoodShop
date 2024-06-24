@@ -19,29 +19,10 @@ struct ContentView: View {
         NavigationView {
             
             ScrollView(.vertical) {
-                TabView {
-                    ForEach(0..<container.state.shopItems.count, id: \.self) { index in
-                        
-                        KFImage(container.state.shopItems[index].image)
-                            .resizable()
-                            .clipShape(RoundedRectangle(cornerRadius: 10))
-                            .padding(.all, 10)
-                            .onAppear {
-//                                print(container.state.shopItems.count)
-//                                print(index)
-                            }
-                    }.onChange(of: container.state.shopItems) { newValue in
-                        print("newnewnew", newValue)
-                    }
-                }
-                .background(
-                    LinearGradient(colors: [
-                        Color.red.opacity(0.1), Color.blue.opacity(0.2)
-                    ], startPoint: .topLeading, endPoint: .bottomTrailing)
-                )
-                .frame(maxWidth: .infinity)
-                .frame(height: 220)
-                .tabViewStyle(.page)
+                
+                HeaderView(shopItems: Binding(get: {
+                    container.state.shopItems
+                }, set: { _ in  }))
                 
                 HStack {
                     Text("Outerwear")

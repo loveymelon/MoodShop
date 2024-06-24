@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		DF5786472C292D070015E105 /* HeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF5786462C292D070015E105 /* HeaderView.swift */; };
 		DF763D9D2C1827C9001F5B60 /* ShopModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF763D9C2C1827C9001F5B60 /* ShopModel.swift */; };
 		DF763DA12C18462B001F5B60 /* ShopEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF763DA02C18462B001F5B60 /* ShopEntity.swift */; };
 		DF763DA32C185DFC001F5B60 /* HomeMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF763DA22C185DFC001F5B60 /* HomeMapper.swift */; };
@@ -53,6 +54,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		DF5786462C292D070015E105 /* HeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderView.swift; sourceTree = "<group>"; };
 		DF763D9C2C1827C9001F5B60 /* ShopModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShopModel.swift; sourceTree = "<group>"; };
 		DF763DA02C18462B001F5B60 /* ShopEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShopEntity.swift; sourceTree = "<group>"; };
 		DF763DA22C185DFC001F5B60 /* HomeMapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeMapper.swift; sourceTree = "<group>"; };
@@ -202,6 +204,7 @@
 			isa = PBXGroup;
 			children = (
 				DF93D8862C16C51400E9DC10 /* ContentView.swift */,
+				DF5786462C292D070015E105 /* HeaderView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -415,6 +418,7 @@
 				DF763D9D2C1827C9001F5B60 /* ShopModel.swift in Sources */,
 				DFA6D3692C197FD10017CEE2 /* HomeRepositoryProtocol.swift in Sources */,
 				DF93D8872C16C51400E9DC10 /* ContentView.swift in Sources */,
+				DF5786472C292D070015E105 /* HeaderView.swift in Sources */,
 				DFA6D3722C198FA80017CEE2 /* MapperProtocol.swift in Sources */,
 				DF7F226A2C1AEA0800A182A7 /* ResponseErrorModel.swift in Sources */,
 				DF93D8C72C17058E00E9DC10 /* Router.swift in Sources */,

@@ -14,7 +14,6 @@ import Combine
 final class HomeRepository: HomeRepositoryProtocol {
     
      // 각 repository마다 mapper가 무조건 다 필요하지않을까 그래서 프로토콜로 명시해주는건 어떨까?
-    
     let mapper = HomeMapper()
     
     private var cancellables: Set<AnyCancellable>
@@ -24,8 +23,6 @@ final class HomeRepository: HomeRepositoryProtocol {
     }
     
     func fetchSearch(text: String, display: String = "10") async -> AnyPublisher<ShopEntity, AppError> {
-        
-        
         
         return await NetworkManager.shared.search(text: text, display: display)
             .map { [weak self] result in
