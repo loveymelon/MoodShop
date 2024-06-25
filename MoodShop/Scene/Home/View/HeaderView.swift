@@ -10,15 +10,12 @@ import Kingfisher
 
 struct HeaderView: View {
     
+    var shopItems: [ShopItemEntity]
+    var selectedItem: (ShopItemEntity) -> Void
+    let timer = Timer.publish(every: 3, on: .main, in: .common).autoconnect()
+    
     @State
     var currentPage: Int = 0
-    @State
-    var fakedPage: [ShopItemEntity] = [] 
-    
-    @Binding
-    var shopItems: [ShopItemEntity]
-    
-    let timer = Timer.publish(every: 3, on: .main, in: .common).autoconnect()
     
     var body: some View {
         TabView(selection: $currentPage) {
@@ -28,8 +25,13 @@ struct HeaderView: View {
                     .resizable()
                     .clipShape(RoundedRectangle(cornerRadius: 10))
                     .padding(.all, 10)
-            }.onChange(of: shopItems) { newValue in
-                print("newnewnew", newValue)
+                    .anchorPreference(key: MAnchorKey.self, value: .bounds, transform: { anchor in
+                        return [shopItems[index].productId: anchor]
+                    })
+                    .onTapGesture {
+                        selectedItem(shopItems[index])
+                    }
+                
             }
         }
         .background(

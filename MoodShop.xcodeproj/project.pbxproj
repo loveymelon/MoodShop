@@ -17,6 +17,8 @@
 		DF763DA32C185DFC001F5B60 /* HomeMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF763DA22C185DFC001F5B60 /* HomeMapper.swift */; };
 		DF7F226A2C1AEA0800A182A7 /* ResponseErrorModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF7F22692C1AEA0800A182A7 /* ResponseErrorModel.swift */; };
 		DF7F226C2C1AEAF800A182A7 /* JSONManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF7F226B2C1AEAF800A182A7 /* JSONManager.swift */; };
+		DF877AA02C2A988200C6CCBA /* DetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF877A9F2C2A988200C6CCBA /* DetailView.swift */; };
+		DF877AA32C2A9D9100C6CCBA /* MAnchorKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF877AA22C2A9D9100C6CCBA /* MAnchorKey.swift */; };
 		DF93D8852C16C51400E9DC10 /* MoodShopApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF93D8842C16C51400E9DC10 /* MoodShopApp.swift */; };
 		DF93D8872C16C51400E9DC10 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF93D8862C16C51400E9DC10 /* ContentView.swift */; };
 		DF93D8892C16C51600E9DC10 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DF93D8882C16C51600E9DC10 /* Assets.xcassets */; };
@@ -66,6 +68,8 @@
 		DF763DA22C185DFC001F5B60 /* HomeMapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeMapper.swift; sourceTree = "<group>"; };
 		DF7F22692C1AEA0800A182A7 /* ResponseErrorModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResponseErrorModel.swift; sourceTree = "<group>"; };
 		DF7F226B2C1AEAF800A182A7 /* JSONManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSONManager.swift; sourceTree = "<group>"; };
+		DF877A9F2C2A988200C6CCBA /* DetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailView.swift; sourceTree = "<group>"; };
+		DF877AA22C2A9D9100C6CCBA /* MAnchorKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MAnchorKey.swift; sourceTree = "<group>"; };
 		DF93D8812C16C51400E9DC10 /* MoodShop.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MoodShop.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DF93D8842C16C51400E9DC10 /* MoodShopApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoodShopApp.swift; sourceTree = "<group>"; };
 		DF93D8862C16C51400E9DC10 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -115,6 +119,38 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		DF877A9A2C2A97F800C6CCBA /* Detail */ = {
+			isa = PBXGroup;
+			children = (
+				DF877A9E2C2A985000C6CCBA /* Container */,
+				DF877A9D2C2A984300C6CCBA /* View */,
+			);
+			path = Detail;
+			sourceTree = "<group>";
+		};
+		DF877A9D2C2A984300C6CCBA /* View */ = {
+			isa = PBXGroup;
+			children = (
+				DF877A9F2C2A988200C6CCBA /* DetailView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		DF877A9E2C2A985000C6CCBA /* Container */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Container;
+			sourceTree = "<group>";
+		};
+		DF877AA12C2A9D6D00C6CCBA /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				DF877AA22C2A9D9100C6CCBA /* MAnchorKey.swift */,
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
 		DF93D8782C16C51400E9DC10 = {
 			isa = PBXGroup;
 			children = (
@@ -139,6 +175,7 @@
 		DF93D8832C16C51400E9DC10 /* MoodShop */ = {
 			isa = PBXGroup;
 			children = (
+				DF877AA12C2A9D6D00C6CCBA /* Helpers */,
 				DFA0E0EC2C242BE000EFAF4C /* Extension */,
 				DF93D8C52C17048700E9DC10 /* Enum */,
 				DF93D8BE2C16F88700E9DC10 /* Network */,
@@ -179,8 +216,9 @@
 			isa = PBXGroup;
 			children = (
 				DF93D8842C16C51400E9DC10 /* MoodShopApp.swift */,
-				DF93D8B42C16D54E00E9DC10 /* Modifier */,
 				DF93D8B32C16D53C00E9DC10 /* Home */,
+				DF877A9A2C2A97F800C6CCBA /* Detail */,
+				DF93D8B42C16D54E00E9DC10 /* Modifier */,
 			);
 			path = Scene;
 			sourceTree = "<group>";
@@ -434,8 +472,10 @@
 				DFA6D36C2C1980490017CEE2 /* HomeRepository.swift in Sources */,
 				DF763DA12C18462B001F5B60 /* ShopEntity.swift in Sources */,
 				DFA6D3702C198BF00017CEE2 /* CommonError.swift in Sources */,
+				DF877AA02C2A988200C6CCBA /* DetailView.swift in Sources */,
 				DF93D8B62C16D5FA00E9DC10 /* DynamicTextModifier.swift in Sources */,
 				DF763DA32C185DFC001F5B60 /* HomeMapper.swift in Sources */,
+				DF877AA32C2A9D9100C6CCBA /* MAnchorKey.swift in Sources */,
 				DF7F226C2C1AEAF800A182A7 /* JSONManager.swift in Sources */,
 				DF93D8BA2C16EF0700E9DC10 /* HomeContainer.swift in Sources */,
 				DF93D8852C16C51400E9DC10 /* MoodShopApp.swift in Sources */,

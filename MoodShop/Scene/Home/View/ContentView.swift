@@ -12,31 +12,38 @@ struct ContentView: View {
     
     @StateObject
     var container = HomeContainer()
+    @State
+    private var selectedItem: ShopItemEntity?
     
     var body: some View {
         NavigationView {
-            
-            ScrollView(.vertical) {
-                
-                HeaderView(shopItems: Binding(get: {
-                    container.state.shopItems
-                }, set: { _ in  }))
-                
-                ForEach(CategoryEnum.allCases, id: \.self) { cases in
+            NavigationLink {
+                DetailView(product: selectedItem)
+            } label: {
+                ScrollView(.vertical) {
                     
-                    if let items = container.state.categoryItems[cases] {
+                    HeaderView(shopItems: container.state.shopItems) { item in
+                        selectedItem = item
+                    }
+                    
+                    ForEach(CategoryEnum.allCases, id: \.self) { cases in
                         
-                        CategoryView(categoryItems: items, productName: cases.rawValue)
+                        if let items = container.state.categoryItems[cases] {
+                            
+                            CategoryView(categoryItems: items, productName: cases.rawValue) { item in
+                                selectedItem = item
+                            }
+                        }
                         
                     }
+                    
                 }
-                
-            }
-            .navigationBarTitleDisplayMode(.inline)
-            .toolbar {
-                ToolbarItem(placement: .principal) {
-                    Text("Mood Shop")
-                        .setTextStyle(size: 30, design: .serif, weight: .semibold)
+                .navigationBarTitleDisplayMode(.inline)
+                .toolbar {
+                    ToolbarItem(placement: .principal) {
+                        Text("Mood Shop")
+                            .setTextStyle(size: 30, design: .serif, weight: .semibold)
+                    }
                 }
             }
             
@@ -52,5 +59,19 @@ struct ContentView: View {
         .onSubmit(of: .search) {
             container.send(.searchTap)
         }
+    }
+}
+
+struct ImageView: View {
+    var imageURL: URL?
+    var size: CGSize
+    
+    var body: some View {
+        KFImage(imageURL)
+            .resizable()
+            .clipShape(RoundedRectangle(cornerRadius: 10))
+            .padding(.all, 10)
+//            .frame(width: UIScreen.main.bounds.width / 2.5, height: 200)
+            .frame(width: size.width, height: size.height)
     }
 }
