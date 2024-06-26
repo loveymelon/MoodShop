@@ -12,41 +12,32 @@ struct ContentView: View {
     
     @StateObject
     var container = HomeContainer()
-    @State
-    private var selectedItem: ShopItemEntity?
     
     var body: some View {
         NavigationView {
-            NavigationLink {
-                DetailView(product: selectedItem)
-            } label: {
-                ScrollView(.vertical) {
+            
+            ScrollView(.vertical) {
+                
+                HeaderView(shopItems: container.state.shopItems)
+                
+                ForEach(CategoryEnum.allCases, id: \.self) { cases in
                     
-                    HeaderView(shopItems: container.state.shopItems) { item in
-                        selectedItem = item
-                    }
-                    
-                    ForEach(CategoryEnum.allCases, id: \.self) { cases in
+                    if let items = container.state.categoryItems[cases] {
                         
-                        if let items = container.state.categoryItems[cases] {
-                            
-                            CategoryView(categoryItems: items, productName: cases.rawValue) { item in
-                                selectedItem = item
-                            }
-                        }
+                        CategoryView(categoryItems: items, productName: cases.rawValue)
                         
                     }
                     
                 }
-                .navigationBarTitleDisplayMode(.inline)
-                .toolbar {
-                    ToolbarItem(placement: .principal) {
-                        Text("Mood Shop")
-                            .setTextStyle(size: 30, design: .serif, weight: .semibold)
-                    }
+                
+            }
+            .navigationBarTitleDisplayMode(.inline)
+            .toolbar {
+                ToolbarItem(placement: .principal) {
+                    Text("Mood Shop")
+                        .setTextStyle(size: 30, design: .serif, weight: .semibold)
                 }
             }
-            
         }
         .onAppear {
             container.send(.onAppear)

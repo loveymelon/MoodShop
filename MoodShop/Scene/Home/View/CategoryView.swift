@@ -18,7 +18,10 @@ struct CategoryView: View {
     // 자식이 부모한테 값을 주는 단방향이기 때문에 클로저로 해결하였다.
 //    @Binding
 //    var selectedItem: ShopItemEntity?
-    var selectedItem: (ShopItemEntity) -> Void
+    @State
+    var selectedItem: ShopItemEntity?
+    @State
+    private var isDetailViewActive: Bool = false
     
     var body: some View {
         
@@ -34,24 +37,37 @@ struct CategoryView: View {
             LazyHStack {
                 
                 ForEach(Array(categoryItems.enumerated()), id: \.element.productId) { index, item in
-                    
+
                     VStack {
+                        
                         KFImage(item.image)
                             .resizable()
                             .clipShape(RoundedRectangle(cornerRadius: 10))
                             .padding(.all, 10)
                             .frame(width: UIScreen.main.bounds.width / 2.5, height: 200)
+                            .onTapGesture {
+                                selectedItem = item
+                                isDetailViewActive.toggle()
+                            }
+                        
                         Text("\(item.lprice)")
-                    }
-                    .onTapGesture {
-                        selectedItem(categoryItems[index])
+                        
                     }
                     
                 }
+                
             }
-
+            
         }
         .frame(maxWidth: .infinity)
+        
+        NavigationLink(
+            destination: DetailView(product: selectedItem),
+            isActive: $isDetailViewActive,
+            label: {
+                EmptyView()
+            }
+        )
         
     }
 }
