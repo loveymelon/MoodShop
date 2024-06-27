@@ -13,12 +13,30 @@ struct ContentView: View {
     @StateObject
     var container = HomeContainer()
     
+    @State
+    var selectedProduct: ShopItemEntity?
+    
     var body: some View {
         NavigationView {
             
             ScrollView(.vertical) {
                 
                 HeaderView(shopItems: container.state.shopItems)
+//                    .overlayPreferenceValue(MAnchorKey.self, { value in
+//                        GeometryReader(content: { geometry in
+//                            if let selectedProduct, let anchor = value[selectedProduct.productId] {
+//                                let rect = geometry[anchor]
+//                                
+//                                ImageView(imageURL: selectedProduct.image, size: rect.size)
+//                                    .offset(x: rect.minX, y: rect.minY)
+//                                    .onAppear{
+//                                        print("createdddd")
+//                                    }
+//            //                        .animation(.snappy(duration: 0.35, extraBounce: 0), value: rect)
+//                            }
+//                        })
+//                        
+//                    }) // 받는쪽
                 
                 ForEach(CategoryEnum.allCases, id: \.self) { cases in
                     
@@ -50,6 +68,7 @@ struct ContentView: View {
         .onSubmit(of: .search) {
             container.send(.searchTap)
         }
+        
     }
 }
 

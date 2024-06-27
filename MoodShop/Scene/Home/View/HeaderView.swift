@@ -11,13 +11,15 @@ import Kingfisher
 struct HeaderView: View {
     
     var shopItems: [ShopItemEntity]
-    
-    @State
-    var selectedItem: ShopItemEntity?
     let timer = Timer.publish(every: 3, on: .main, in: .common).autoconnect()
     
     @State
-    var currentPage: Int = 0
+    var selectedItem: ShopItemEntity?
+    @State
+    private var currentPage: Int = 0
+    
+    @State
+    var isZoom: Bool = false
     
     var body: some View {
         NavigationLink {
@@ -25,22 +27,52 @@ struct HeaderView: View {
         } label: {
             TabView(selection: $currentPage) {
                 
-                ForEach(0..<shopItems.count, id: \.self) { index in
+                
+                ForEach(shopItems, id: \.productId) { item in
                     
-                    KFImage(shopItems[index].image)
+                    KFImage(item.image)
                         .resizable()
                         .clipShape(RoundedRectangle(cornerRadius: 10))
                         .padding(.all, 10)
-                        .anchorPreference(key: MAnchorKey.self, value: .bounds, transform: { anchor in
-                            return [shopItems[index].productId: anchor]
-                        })
                         .onTapGesture {
-                            selectedItem = shopItems[index]
+                            selectedItem = item
                         }
                     
+                    
+//                    VStack {
+//                        
+//                        Color.clear
+//                            .anchorPreference(key: MAnchorKey.self, value: .bounds, transform: { anchor in
+//                                return [shopItems[index].productId: anchor]
+//                            }) // 보내는 쪽
+//                            .onTapGesture {
+//                                selectedItem = shopItems[index]
+//                            }
+//                        
+//                    }
+//                    .overlayPreferenceValue(MAnchorKey.self, { value in
+//                        GeometryReader{ geometry in
+//                            ForEach(shopItems, id: \.productId) { item in
+//                                
+//                                
+//                                if let anchor = value[item.productId], selectedItem?.productId != item.productId {
+//                                    let rect = geometry[anchor]
+//                                    
+//                                    ImageView(imageURL: item.image, size: rect.size)
+//                                        .onAppear {
+//                                            print("create", item.title)
+//                                        }
+//                                }
+////                                KFImage(item.image)
+////                                    .resizable()
+////                                    .clipShape(RoundedRectangle(cornerRadius: 10))
+////                                    .padding(.all, 10)
+//                                
+//                            }
+//                        }
+//                    })
+                    
                 }
-                
-                
                 
             }
             .background(
@@ -56,6 +88,8 @@ struct HeaderView: View {
                     currentPage = (currentPage + 1) % shopItems.count
                 }
             })
+            
+            
         }
     }
 }
