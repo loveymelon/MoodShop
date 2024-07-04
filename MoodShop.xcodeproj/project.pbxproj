@@ -13,7 +13,7 @@
 		DF57864D2C29494D0015E105 /* Entity.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF57864C2C29494D0015E105 /* Entity.swift */; };
 		DF57864F2C2964100015E105 /* MapperProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF57864E2C2964100015E105 /* MapperProtocol.swift */; };
 		DF69039A2C36520800DC5895 /* DetailContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF6903992C36520800DC5895 /* DetailContainer.swift */; };
-		DF71B0F02C3263A500E35932 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = DF71B0EF2C3263A500E35932 /* Kingfisher */; };
+		DF69039E2C366CE200DC5895 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = DF69039D2C366CE200DC5895 /* Kingfisher */; };
 		DF763D9D2C1827C9001F5B60 /* ShopModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF763D9C2C1827C9001F5B60 /* ShopModel.swift */; };
 		DF763DA12C18462B001F5B60 /* ShopEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF763DA02C18462B001F5B60 /* ShopEntity.swift */; };
 		DF763DA32C185DFC001F5B60 /* HomeMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF763DA22C185DFC001F5B60 /* HomeMapper.swift */; };
@@ -100,7 +100,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				DF71B0F02C3263A500E35932 /* Kingfisher in Frameworks */,
+				DF69039E2C366CE200DC5895 /* Kingfisher in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -338,7 +338,7 @@
 			);
 			name = MoodShop;
 			packageProductDependencies = (
-				DF71B0EF2C3263A500E35932 /* Kingfisher */,
+				DF69039D2C366CE200DC5895 /* Kingfisher */,
 			);
 			productName = MoodShop;
 			productReference = DF93D8812C16C51400E9DC10 /* MoodShop.app */;
@@ -413,7 +413,7 @@
 			);
 			mainGroup = DF93D8782C16C51400E9DC10;
 			packageReferences = (
-				DF71B0EE2C3263A500E35932 /* XCRemoteSwiftPackageReference "Kingfisher" */,
+				DF69039C2C366CE200DC5895 /* XCRemoteSwiftPackageReference "Kingfisher" */,
 			);
 			productRefGroup = DF93D8822C16C51400E9DC10 /* Products */;
 			projectDirPath = "";
@@ -816,7 +816,7 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		DF71B0EE2C3263A500E35932 /* XCRemoteSwiftPackageReference "Kingfisher" */ = {
+		DF69039C2C366CE200DC5895 /* XCRemoteSwiftPackageReference "Kingfisher" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/onevcat/Kingfisher.git";
 			requirement = {
@@ -827,9 +827,9 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		DF71B0EF2C3263A500E35932 /* Kingfisher */ = {
+		DF69039D2C366CE200DC5895 /* Kingfisher */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = DF71B0EE2C3263A500E35932 /* XCRemoteSwiftPackageReference "Kingfisher" */;
+			package = DF69039C2C366CE200DC5895 /* XCRemoteSwiftPackageReference "Kingfisher" */;
 			productName = Kingfisher;
 		};
 /* End XCSwiftPackageProductDependency section */

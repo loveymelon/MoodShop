@@ -17,119 +17,125 @@ struct DetailView: View {
     
     var body: some View {
         
-        ScrollView(.vertical) {
-            VStack(spacing: 0) {
-                
-                KFImage(product?.image)
-                    .resizable()
-                    .aspectRatio(contentMode: .fill)
-                    .frame(height: UIScreen.main.bounds.height / 2.5)
-                // 이미지 바텀을 스크롤 탑으로
-            }
+        ZStack(alignment: .bottom) {
             
-            VStack {
-                LinearGradient(
-                    gradient: Gradient(colors: [Color.clear, Color.gray.opacity(0.9)]),
-                    startPoint: .top,
-                    endPoint: .bottom
-                )
-                .frame(height: 100)
-                
-                createTextView(text: product!.title,
-                               size: 30,
-                               design: .monospaced,
-                               weight: .bold)
-                
-                Spacer(minLength: 30)
-                
-                HStack {
+            ScrollView(.vertical) {
+                VStack(spacing: 0) {
                     
-                    createTextView(text: "₩ \(product!.lprice)",
-                                   size: 20,
-                                   design: .default,
+                    KFImage(product?.image)
+                        .resizable()
+                        .aspectRatio(contentMode: .fill)
+                        .frame(height: UIScreen.main.bounds.height / 2.5)
+                    // 이미지 바텀을 스크롤 탑으로
+                }
+                
+                VStack {
+                    LinearGradient(
+                        gradient: Gradient(colors: [Color.clear, Color.gray.opacity(0.9)]),
+                        startPoint: .top,
+                        endPoint: .bottom
+                    )
+                    .frame(height: 100)
+                    
+                    createTextView(text: product!.title,
+                                   size: 30,
+                                   design: .monospaced,
                                    weight: .bold)
-                    .padding(.leading, 30)
+                    .padding(.horizontal, 10)
                     
-                    Spacer()
+                    Spacer(minLength: 20)
                     
-                    createTextView(
-                        text: product!.mallName,
-                        size: 20,
-                        design: .rounded,
-                        weight: .semibold)
-                    .padding(.leading, 20)
+                    HStack {
+                        
+                        createTextView(text: String().addComma(to: String(product!.lprice)),
+                                       size: 20,
+                                       design: .default,
+                                       weight: .bold)
+                        .padding(.leading, 20)
+                        .foregroundStyle(Color.gray)
+                        
+                        Spacer()
+                    
+                        createTextView(
+                            text: "구매 사이트 \(product!.mallName)",
+                            size: 20,
+                            design: .rounded,
+                            weight: .semibold)
+                        .padding(.trailing, 30)
+                        .foregroundStyle(Color.gray)
+                        
+                    }
+                    
+                    Spacer(minLength: 20)
+                    
+                    HStack {
+                        createTextView(text: "다른 제품", size: 20, design: .monospaced, weight: .bold)
+                            .padding(.leading, 10)
+                        Spacer()
+                    }
+                    
+                    CategoryView(categoryItems: container.state.shopItems, productName: "")
                     
                 }
+                .background(Color.white)
                 
-                Spacer(minLength: 20)
-                
-                HStack {
-                    createTextView(text: "다른 제품", size: 20, design: .monospaced, weight: .bold)
-                        .padding(.leading, 10)
-                    Spacer()
-                }
-                
-                CategoryView(categoryItems: container.state.shopItems, productName: "")
+                Color.clear
+                    .frame(height: 80)
                 
             }
-            .background(Color.white)
+            .navigationTitle("Mood Shop")
+            .navigationBarTitleDisplayMode(.inline)
+            .onAppear {
+                container.send(.onAppear)
+            }
+            
+            HStack(spacing: 10) {
+                
+                Button {
+                    print("tap")
+                } label: {
+                    Text("구매하기")
+                        .setTextStyle(size: 20, design: .monospaced, weight: .bold)
+                        .foregroundStyle(Color.black)
+                }
+                .padding()
+                .frame(maxWidth: .infinity)
+                .background(
+                    LinearGradient(colors: [
+                        Color.red.opacity(0.1), Color.blue.opacity(0.2)
+                    ], startPoint: .topLeading, endPoint: .bottomTrailing)
+                )
+                .clipShape(RoundedRectangle(cornerRadius: 40))
+                
+                Button {
+                    
+                    withAnimation {
+                        container.send(.likeButtonTap)
+                    }
+                    
+                } label: {
+                    Image(
+                        container.state.likeButtonState ? "heartFill" : "heart",
+                        label: Text("")
+                    )
+                        .resizable()
+                        .aspectRatio(contentMode: .fit)
+                        .padding()
+                        .frame(width: 50)
+                }
+                .background(
+                    LinearGradient(colors: [
+                        Color.red.opacity(0.1), Color.blue.opacity(0.2)
+                    ], startPoint: .topLeading, endPoint: .bottomTrailing)
+                )
+                .clipShape(RoundedRectangle(cornerRadius: 15))
+                
+            }
+            .frame(height: 50)
+            .padding(.all, 20)
+            
             
         }
-        .onAppear {
-            container.send(.onAppear)
-        }
-        
-        
-        //        VStack {
-        //            ScrollView(.vertical) {
-        //                ZStack(alignment: .bottom) {
-        //                    KFImage(product?.image)
-        //                        .resizable()
-        //                        .clipShape(RoundedRectangle(cornerRadius: 10))
-        //                        .frame(width: .infinity, height: UIScreen.main.bounds.height / 2.5)
-        //                        .onAppear {
-        //                            print(product)
-        //                        }
-        //
-        //                    Text(product!.title)
-        //                        .frame(width: 100)
-        //
-        ////                    LinearGradient(
-        ////                        gradient: Gradient(colors: [Color.clear, Color.black.opacity(0.2)]),
-        ////                        startPoint: .center,
-        ////                        endPoint: .bottom
-        ////                    )
-        ////                    .frame(height: 200)
-        ////                    .clipShape(RoundedRectangle(cornerRadius: 10))
-        //                }
-        //                Rectangle()
-        //                    .background(Color.gray)
-        //                    .frame(height: /*@START_MENU_TOKEN@*/100/*@END_MENU_TOKEN@*/)
-        //            }
-        //        }
-        
-        //        if let product {
-        //            GeometryReader(content: { geometry in
-        //                let size = geometry.size
-        //
-        //                Color.clear
-        //                    .anchorPreference(key: MAnchorKey.self, value: .bounds, transform: { anchor in
-        //                        return [product.productId: anchor]
-        //                    })
-        //
-        ////                ImageView(imageURL: product .image, size: rect.size)
-        ////                    .onAppear {
-        ////                        print(rect.size)
-        ////                    }
-        //            })
-        //            .onAppear {
-        //                print("none", product.title)
-        //            }
-        //            .frame(height: 400)
-        //
-        //            Spacer()
-        //        }
-        
     }
 }
 
