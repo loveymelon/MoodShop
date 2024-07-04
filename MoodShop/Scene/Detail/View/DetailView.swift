@@ -19,7 +19,7 @@ struct DetailView: View {
         
         ZStack(alignment: .bottom) {
             
-            ScrollView(.vertical) {
+            ScrollView(.vertical, showsIndicators: false) {
                 VStack(spacing: 0) {
                     
                     KFImage(product?.image)

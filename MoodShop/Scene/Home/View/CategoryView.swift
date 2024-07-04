@@ -33,7 +33,7 @@ struct CategoryView: View {
             Spacer()
         }
         
-        ScrollView(.horizontal) {
+        ScrollView(.horizontal, showsIndicators: false) {
             LazyHStack {
                 
                 ForEach(Array(categoryItems.enumerated()), id: \.element.productId) { index, item in
