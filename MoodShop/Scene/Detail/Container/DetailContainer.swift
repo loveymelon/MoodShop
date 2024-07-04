@@ -12,11 +12,15 @@ final class DetailContainer: ObservableObject, ContainerProtocol {
     
     enum Intent {
         case onAppear
+        case netTrigger
+        case likeButtonTap
     }
     
     struct State {
         var error: String = ""
         var shopItems: [ShopItemEntity] = []
+        var likeButtonState: Bool = false
+        var netState: Bool = false
     }
     
     
@@ -28,13 +32,20 @@ final class DetailContainer: ObservableObject, ContainerProtocol {
     func send(_ intent: Intent) {
         switch intent {
         case .onAppear:
+            if !state.netState {
+                send(.netTrigger)
+                state.netState.toggle()
+            }
+        case .netTrigger:
             Task {
                 await searchNetwork(text: "코디")
-                let a = CategoryEnum.allCases.map { $0.rawValue }
+                
                 for item in CategoryEnum.allCases {
                     await searchNetwork(text: item.rawValue, categoryEnum: item)
                 }
             }
+        case .likeButtonTap:
+            state.likeButtonState.toggle()
         }
     }
 }
