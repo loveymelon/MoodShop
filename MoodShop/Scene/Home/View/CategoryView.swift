@@ -50,7 +50,8 @@ struct CategoryView: View {
                                 isDetailViewActive.toggle()
                             }
                         
-                        Text("\(item.lprice)")
+                        Text(String().addComma(to: String(item.lprice)))
+                            .setTextStyle(size: 18, design: .default, weight: .none)
                         
                     }
                     
