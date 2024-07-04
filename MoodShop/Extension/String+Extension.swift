@@ -30,4 +30,20 @@ extension String {
                 return self
             }
         }
+    
+    func addComma(to numberString: String) -> String {
+        let cleanNumberString = numberString.replacingOccurrences(of: "[^0-9]", with: "", options: .regularExpression)
+        
+        guard let number = Double(cleanNumberString) else {
+            return numberString
+        }
+        
+        let numberFormatter = NumberFormatter()
+        numberFormatter.numberStyle = .decimal
+        let formattedNumberString = numberFormatter.string(from: NSNumber(value: number)) ?? ""
+        
+        let resultString = "\(formattedNumberString) 원"
+        
+        return resultString
+    }
 }
