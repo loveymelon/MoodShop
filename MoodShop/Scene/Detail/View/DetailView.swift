@@ -63,7 +63,11 @@ struct DetailView: View {
                 
                 Spacer(minLength: 20)
                 
-                createTextView(text: "다른 제품", size: 20, design: .monospaced, weight: .bold)
+                HStack {
+                    createTextView(text: "다른 제품", size: 20, design: .monospaced, weight: .bold)
+                        .padding(.leading, 10)
+                    Spacer()
+                }
                 
                 CategoryView(categoryItems: container.state.shopItems, productName: "")
                 
@@ -131,7 +135,7 @@ struct DetailView: View {
 
 extension DetailView {
     func createTextView(text: String, size: CGFloat, design: Font.Design?, weight: Font.Weight?) -> some View {
-        return Text(text)
+        return Text(text.rmHTMLTag)
             .setTextStyle(size: size, design: design, weight: weight)
     }
 }
