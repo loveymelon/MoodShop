@@ -12,60 +12,68 @@ struct DetailView: View {
     
     var product: ShopItemEntity?
     
+    @StateObject
+    var container = DetailContainer()
+    
     var body: some View {
         
-        VStack(spacing: 0) {
-            KFImage(product?.image)
-                .resizable()
-                .aspectRatio(contentMode: .fill)
-                .frame(height: UIScreen.main.bounds.height / 2.5)
-                .onAppear {
-                    print(product)
-                }
+        ScrollView(.vertical) {
+            VStack(spacing: 0) {
+                
+                KFImage(product?.image)
+                    .resizable()
+                    .aspectRatio(contentMode: .fill)
+                    .frame(height: UIScreen.main.bounds.height / 2.5)
                 // 이미지 바텀을 스크롤 탑으로
-            
-            ScrollView(.vertical) {
-                VStack {
-                    LinearGradient(
-                        gradient: Gradient(colors: [Color.clear, Color.gray.opacity(0.9)]),
-                        startPoint: .top,
-                        endPoint: .bottom
-                    )
-                    .frame(height: 100)
-                    
-                    createTextView(text: product!.title,
-                                   size: 30,
-                                   design: .monospaced,
-                                   weight: .bold)
-                    
-                    Spacer(minLength: 30)
-                    
-                    HStack {
-                        
-                        createTextView(text: "₩ \(product!.lprice)",
-                                       size: 20,
-                                       design: .default,
-                                       weight: .bold)
-                            .padding(.leading, 30)
-                        
-                        Spacer()
-                        
-                        createTextView(
-                            text: product!.mallName,
-                            size: 20,
-                            design: .rounded,
-                            weight: .semibold)
-                        .padding(.leading, 20)
-                        
-                    }
-                    
-                    Spacer(minLength: 20)
-                    
-                    createTextView(text: "다른 제품", size: 20, design: .monospaced, weight: .bold)
-                }
             }
+            
+            VStack {
+                LinearGradient(
+                    gradient: Gradient(colors: [Color.clear, Color.gray.opacity(0.9)]),
+                    startPoint: .top,
+                    endPoint: .bottom
+                )
+                .frame(height: 100)
+                
+                createTextView(text: product!.title,
+                               size: 30,
+                               design: .monospaced,
+                               weight: .bold)
+                
+                Spacer(minLength: 30)
+                
+                HStack {
+                    
+                    createTextView(text: "₩ \(product!.lprice)",
+                                   size: 20,
+                                   design: .default,
+                                   weight: .bold)
+                    .padding(.leading, 30)
+                    
+                    Spacer()
+                    
+                    createTextView(
+                        text: product!.mallName,
+                        size: 20,
+                        design: .rounded,
+                        weight: .semibold)
+                    .padding(.leading, 20)
+                    
+                }
+                
+                Spacer(minLength: 20)
+                
+                createTextView(text: "다른 제품", size: 20, design: .monospaced, weight: .bold)
+                
+                CategoryView(categoryItems: container.state.shopItems, productName: "")
+                
+            }
+            .background(Color.white)
+            
         }
-        
+        .onAppear {
+            container.send(.onAppear)
+        }
         
         
         //        VStack {
