@@ -14,6 +14,7 @@
 		DF57864F2C2964100015E105 /* MapperProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF57864E2C2964100015E105 /* MapperProtocol.swift */; };
 		DF69039A2C36520800DC5895 /* DetailContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF6903992C36520800DC5895 /* DetailContainer.swift */; };
 		DF69039E2C366CE200DC5895 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = DF69039D2C366CE200DC5895 /* Kingfisher */; };
+		DF6903A12C36863A00DC5895 /* UserDefaultsCollectionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF6903A02C36863A00DC5895 /* UserDefaultsCollectionManager.swift */; };
 		DF763D9D2C1827C9001F5B60 /* ShopModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF763D9C2C1827C9001F5B60 /* ShopModel.swift */; };
 		DF763DA12C18462B001F5B60 /* ShopEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF763DA02C18462B001F5B60 /* ShopEntity.swift */; };
 		DF763DA32C185DFC001F5B60 /* HomeMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF763DA22C185DFC001F5B60 /* HomeMapper.swift */; };
@@ -65,6 +66,7 @@
 		DF57864C2C29494D0015E105 /* Entity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Entity.swift; sourceTree = "<group>"; };
 		DF57864E2C2964100015E105 /* MapperProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapperProtocol.swift; sourceTree = "<group>"; };
 		DF6903992C36520800DC5895 /* DetailContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailContainer.swift; sourceTree = "<group>"; };
+		DF6903A02C36863A00DC5895 /* UserDefaultsCollectionManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsCollectionManager.swift; sourceTree = "<group>"; };
 		DF763D9C2C1827C9001F5B60 /* ShopModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShopModel.swift; sourceTree = "<group>"; };
 		DF763DA02C18462B001F5B60 /* ShopEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShopEntity.swift; sourceTree = "<group>"; };
 		DF763DA22C185DFC001F5B60 /* HomeMapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeMapper.swift; sourceTree = "<group>"; };
@@ -121,6 +123,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		DF69039F2C36861600DC5895 /* Manager */ = {
+			isa = PBXGroup;
+			children = (
+				DF6903A02C36863A00DC5895 /* UserDefaultsCollectionManager.swift */,
+			);
+			path = Manager;
+			sourceTree = "<group>";
+		};
 		DF877A9A2C2A97F800C6CCBA /* Detail */ = {
 			isa = PBXGroup;
 			children = (
@@ -178,6 +188,7 @@
 		DF93D8832C16C51400E9DC10 /* MoodShop */ = {
 			isa = PBXGroup;
 			children = (
+				DF69039F2C36861600DC5895 /* Manager */,
 				DF877AA12C2A9D6D00C6CCBA /* Helpers */,
 				DFA0E0EC2C242BE000EFAF4C /* Extension */,
 				DF93D8C52C17048700E9DC10 /* Enum */,
@@ -466,6 +477,7 @@
 				DFA0E0EE2C242BF300EFAF4C /* String+Extension.swift in Sources */,
 				DF763D9D2C1827C9001F5B60 /* ShopModel.swift in Sources */,
 				DF93D8872C16C51400E9DC10 /* ContentView.swift in Sources */,
+				DF6903A12C36863A00DC5895 /* UserDefaultsCollectionManager.swift in Sources */,
 				DF5786472C292D070015E105 /* HeaderView.swift in Sources */,
 				DF5786492C2930480015E105 /* CategoryView.swift in Sources */,
 				DF57864D2C29494D0015E105 /* Entity.swift in Sources */,
