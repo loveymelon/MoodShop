@@ -6,3 +6,9 @@
 //
 
 import Foundation
+
+protocol RealmProtocol {
+    func create(data: ShopItemEntity) throws
+    func fetch() -> [ShopItemRequestDTO]
+    func delete(data: ShopItemEntity)
+}
