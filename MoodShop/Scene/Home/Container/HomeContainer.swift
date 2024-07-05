@@ -39,7 +39,7 @@ final class HomeContainer: ObservableObject, ContainerProtocol {
             
             Task {
                 await searchNetwork(text: "옷", display: "3")
-                let a = CategoryEnum.allCases.map { $0.rawValue }
+                
                 for item in CategoryEnum.allCases {
                     await searchNetwork(text: item.rawValue, categoryEnum: item)
                 }

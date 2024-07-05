@@ -11,23 +11,20 @@ import Kingfisher
 struct HeaderView: View {
     
     var shopItems: [ShopItemEntity]
-    let timer = Timer.publish(every: 3, on: .main, in: .common).autoconnect()
+    let timer = Timer.publish(every: 2, on: .main, in: .common).autoconnect()
     
     @State
     var selectedItem: ShopItemEntity?
     @State
     private var currentPage: Int = 0
     
-    @State
-    var isZoom: Bool = false
-    
     var body: some View {
         NavigationLink {
             DetailView(product: selectedItem)
         } label: {
             TabView(selection: $currentPage) {
-                
-                ForEach(shopItems, id: \.productId) { item in
+
+                ForEach(Array(shopItems.enumerated()), id: \.element.productId) { index, item in
                     
                     KFImage(item.image)
                         .resizable()
@@ -36,7 +33,7 @@ struct HeaderView: View {
                         .onTapGesture {
                             selectedItem = item
                         }
-                    
+                        .tag(index)
                 }
                 
             }
@@ -51,6 +48,7 @@ struct HeaderView: View {
             .onReceive(timer, perform: { _ in
                 withAnimation {
                     currentPage = (currentPage + 1) % shopItems.count
+                    print(currentPage)
                 }
             })
             

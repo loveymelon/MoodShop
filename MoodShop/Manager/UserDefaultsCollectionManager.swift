@@ -12,9 +12,12 @@ struct UserDefaultWrapper<T: Codable> {
     private let key: String
     private let defaultValue: T?
     
+    let mapper: UserDefaultsMapper
+    
     init(key: String, defaultValue: T?) {
         self.key = key
         self.defaultValue = defaultValue
+        self.mapper = UserDefaultsMapper()
     }
     
     var wrappedValue: T? {
@@ -35,4 +38,9 @@ struct UserDefaultWrapper<T: Codable> {
             }
         }
     }
+}
+
+extension UserDefaultWrapper {
+//    @UserDefaultWrapper(key: "LikeSet", defaultValue: nil)
+//    static var likeItems: String
 }

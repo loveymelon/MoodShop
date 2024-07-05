@@ -38,7 +38,7 @@ final class DetailContainer: ObservableObject, ContainerProtocol {
             }
         case .netTrigger:
             Task {
-                await searchNetwork(text: "코디")
+                await searchNetwork(text: "시즌")
                 
                 for item in CategoryEnum.allCases {
                     await searchNetwork(text: item.rawValue, categoryEnum: item)
@@ -46,6 +46,10 @@ final class DetailContainer: ObservableObject, ContainerProtocol {
             }
         case .likeButtonTap:
             state.likeButtonState.toggle()
+            
+            if state.likeButtonState {
+                
+            }
         }
     }
 }

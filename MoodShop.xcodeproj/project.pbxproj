@@ -15,6 +15,7 @@
 		DF69039A2C36520800DC5895 /* DetailContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF6903992C36520800DC5895 /* DetailContainer.swift */; };
 		DF69039E2C366CE200DC5895 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = DF69039D2C366CE200DC5895 /* Kingfisher */; };
 		DF6903A12C36863A00DC5895 /* UserDefaultsCollectionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF6903A02C36863A00DC5895 /* UserDefaultsCollectionManager.swift */; };
+		DF6903A32C368B7F00DC5895 /* UserDefaultsMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF6903A22C368B7F00DC5895 /* UserDefaultsMapper.swift */; };
 		DF763D9D2C1827C9001F5B60 /* ShopModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF763D9C2C1827C9001F5B60 /* ShopModel.swift */; };
 		DF763DA12C18462B001F5B60 /* ShopEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF763DA02C18462B001F5B60 /* ShopEntity.swift */; };
 		DF763DA32C185DFC001F5B60 /* HomeMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF763DA22C185DFC001F5B60 /* HomeMapper.swift */; };
@@ -67,6 +68,7 @@
 		DF57864E2C2964100015E105 /* MapperProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapperProtocol.swift; sourceTree = "<group>"; };
 		DF6903992C36520800DC5895 /* DetailContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailContainer.swift; sourceTree = "<group>"; };
 		DF6903A02C36863A00DC5895 /* UserDefaultsCollectionManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsCollectionManager.swift; sourceTree = "<group>"; };
+		DF6903A22C368B7F00DC5895 /* UserDefaultsMapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsMapper.swift; sourceTree = "<group>"; };
 		DF763D9C2C1827C9001F5B60 /* ShopModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShopModel.swift; sourceTree = "<group>"; };
 		DF763DA02C18462B001F5B60 /* ShopEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShopEntity.swift; sourceTree = "<group>"; };
 		DF763DA22C185DFC001F5B60 /* HomeMapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeMapper.swift; sourceTree = "<group>"; };
@@ -127,8 +129,35 @@
 			isa = PBXGroup;
 			children = (
 				DF6903A02C36863A00DC5895 /* UserDefaultsCollectionManager.swift */,
+				DF6903A22C368B7F00DC5895 /* UserDefaultsMapper.swift */,
 			);
 			path = Manager;
+			sourceTree = "<group>";
+		};
+		DF6903A42C36985000DC5895 /* DTO */ = {
+			isa = PBXGroup;
+			children = (
+				DF7F22692C1AEA0800A182A7 /* ResponseErrorModel.swift */,
+				DF763D9C2C1827C9001F5B60 /* ShopModel.swift */,
+			);
+			path = DTO;
+			sourceTree = "<group>";
+		};
+		DF6903A52C36986700DC5895 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				DF6903A62C36986D00DC5895 /* Entity */,
+				DF6903A42C36985000DC5895 /* DTO */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		DF6903A62C36986D00DC5895 /* Entity */ = {
+			isa = PBXGroup;
+			children = (
+				DF763DA02C18462B001F5B60 /* ShopEntity.swift */,
+			);
+			path = Entity;
 			sourceTree = "<group>";
 		};
 		DF877A9A2C2A97F800C6CCBA /* Detail */ = {
@@ -188,6 +217,7 @@
 		DF93D8832C16C51400E9DC10 /* MoodShop */ = {
 			isa = PBXGroup;
 			children = (
+				DF6903A52C36986700DC5895 /* Model */,
 				DF69039F2C36861600DC5895 /* Manager */,
 				DF877AA12C2A9D6D00C6CCBA /* Helpers */,
 				DFA0E0EC2C242BE000EFAF4C /* Extension */,
@@ -290,9 +320,6 @@
 			children = (
 				DF93D8BF2C16F8B400E9DC10 /* NetworkManager.swift */,
 				DF93D8C62C17058E00E9DC10 /* Router.swift */,
-				DF763D9C2C1827C9001F5B60 /* ShopModel.swift */,
-				DF763DA02C18462B001F5B60 /* ShopEntity.swift */,
-				DF7F22692C1AEA0800A182A7 /* ResponseErrorModel.swift */,
 				DF7F226B2C1AEAF800A182A7 /* JSONManager.swift */,
 			);
 			path = Network;
@@ -495,6 +522,7 @@
 				DF7F226C2C1AEAF800A182A7 /* JSONManager.swift in Sources */,
 				DF93D8BA2C16EF0700E9DC10 /* HomeContainer.swift in Sources */,
 				DF93D8852C16C51400E9DC10 /* MoodShopApp.swift in Sources */,
+				DF6903A32C368B7F00DC5895 /* UserDefaultsMapper.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
