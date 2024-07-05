@@ -6,3 +6,10 @@
 //
 
 import Foundation
+
+enum RealmError: Error {
+    case createFail
+    case updateFail(text: String)
+    case deleteFail
+    case unknownError
+}
