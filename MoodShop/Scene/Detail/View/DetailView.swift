@@ -86,7 +86,9 @@ struct DetailView: View {
             .navigationTitle("Mood Shop")
             .navigationBarTitleDisplayMode(.inline)
             .onAppear {
-                container.send(.onAppear)
+                if let product = product {
+                    container.send(.onAppear(product))
+                }
             }
             
             HStack(spacing: 10) {

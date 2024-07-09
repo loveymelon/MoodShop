@@ -11,7 +11,7 @@ import Combine
 final class DetailContainer: ObservableObject, ContainerProtocol {
     
     enum Intent {
-        case onAppear
+        case onAppear(ShopItemEntity)
         case netTrigger
         case likeButtonTap(ShopItemEntity)
     }
@@ -31,11 +31,16 @@ final class DetailContainer: ObservableObject, ContainerProtocol {
     
     func send(_ intent: Intent) {
         switch intent {
-        case .onAppear:
+        case .onAppear(let item):
+            let likeItems = likeRepository.fetchLikeItems()
+            
             if !state.netState {
                 send(.netTrigger)
                 state.netState.toggle()
             }
+            
+            state.likeButtonState = likeItems.contains(item)
+            
         case .netTrigger:
             Task {
                 await searchNetwork(text: "시즌")
@@ -45,6 +50,7 @@ final class DetailContainer: ObservableObject, ContainerProtocol {
                 }
             }
         case .likeButtonTap(let item):
+            
             state.likeButtonState.toggle()
             
             if state.likeButtonState {
