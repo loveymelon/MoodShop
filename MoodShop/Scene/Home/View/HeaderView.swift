@@ -48,7 +48,7 @@ struct HeaderView: View {
             .onReceive(timer, perform: { _ in
                 withAnimation {
                     currentPage = (currentPage + 1) % shopItems.count
-                    print(currentPage) // timer 정지 시켜야됨
+//                    print(currentPage) // timer 정지 시켜야됨
                 }
             })
             

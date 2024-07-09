@@ -21,6 +21,9 @@
 		DF7F226C2C1AEAF800A182A7 /* JSONManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF7F226B2C1AEAF800A182A7 /* JSONManager.swift */; };
 		DF85D8452C3CEF350024AEBD /* LikeRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF85D8442C3CEF350024AEBD /* LikeRepository.swift */; };
 		DF85D8482C3CEFAD0024AEBD /* DetailMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF85D8472C3CEFAD0024AEBD /* DetailMapper.swift */; };
+		DF85D84F2C3D192A0024AEBD /* WKWebHosting.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF85D84E2C3D192A0024AEBD /* WKWebHosting.swift */; };
+		DF85D8542C3D45000024AEBD /* LikeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF85D8532C3D45000024AEBD /* LikeView.swift */; };
+		DF85D8562C3D45220024AEBD /* LikeContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF85D8552C3D45220024AEBD /* LikeContainer.swift */; };
 		DF877AA02C2A988200C6CCBA /* DetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF877A9F2C2A988200C6CCBA /* DetailView.swift */; };
 		DF877AA32C2A9D9100C6CCBA /* MAnchorKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF877AA22C2A9D9100C6CCBA /* MAnchorKey.swift */; };
 		DF93D8852C16C51400E9DC10 /* MoodShopApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF93D8842C16C51400E9DC10 /* MoodShopApp.swift */; };
@@ -79,6 +82,9 @@
 		DF7F226B2C1AEAF800A182A7 /* JSONManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSONManager.swift; sourceTree = "<group>"; };
 		DF85D8442C3CEF350024AEBD /* LikeRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LikeRepository.swift; sourceTree = "<group>"; };
 		DF85D8472C3CEFAD0024AEBD /* DetailMapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailMapper.swift; sourceTree = "<group>"; };
+		DF85D84E2C3D192A0024AEBD /* WKWebHosting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WKWebHosting.swift; sourceTree = "<group>"; };
+		DF85D8532C3D45000024AEBD /* LikeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LikeView.swift; sourceTree = "<group>"; };
+		DF85D8552C3D45220024AEBD /* LikeContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LikeContainer.swift; sourceTree = "<group>"; };
 		DF877A9F2C2A988200C6CCBA /* DetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailView.swift; sourceTree = "<group>"; };
 		DF877AA22C2A9D9100C6CCBA /* MAnchorKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MAnchorKey.swift; sourceTree = "<group>"; };
 		DF93D8812C16C51400E9DC10 /* MoodShop.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MoodShop.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -188,9 +194,43 @@
 			path = Mapper;
 			sourceTree = "<group>";
 		};
+		DF85D84D2C3D19150024AEBD /* Hosting */ = {
+			isa = PBXGroup;
+			children = (
+				DF85D84E2C3D192A0024AEBD /* WKWebHosting.swift */,
+			);
+			path = Hosting;
+			sourceTree = "<group>";
+		};
+		DF85D8502C3D44E40024AEBD /* Like */ = {
+			isa = PBXGroup;
+			children = (
+				DF85D8522C3D44F30024AEBD /* Container */,
+				DF85D8512C3D44EB0024AEBD /* View */,
+			);
+			path = Like;
+			sourceTree = "<group>";
+		};
+		DF85D8512C3D44EB0024AEBD /* View */ = {
+			isa = PBXGroup;
+			children = (
+				DF85D8532C3D45000024AEBD /* LikeView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		DF85D8522C3D44F30024AEBD /* Container */ = {
+			isa = PBXGroup;
+			children = (
+				DF85D8552C3D45220024AEBD /* LikeContainer.swift */,
+			);
+			path = Container;
+			sourceTree = "<group>";
+		};
 		DF877A9A2C2A97F800C6CCBA /* Detail */ = {
 			isa = PBXGroup;
 			children = (
+				DF85D84D2C3D19150024AEBD /* Hosting */,
 				DF85D8462C3CEF9E0024AEBD /* Mapper */,
 				DF85D8432C3CEF200024AEBD /* Repository */,
 				DF877A9E2C2A985000C6CCBA /* Container */,
@@ -288,6 +328,7 @@
 		DF93D8B22C16D52B00E9DC10 /* Scene */ = {
 			isa = PBXGroup;
 			children = (
+				DF85D8502C3D44E40024AEBD /* Like */,
 				DF93D8842C16C51400E9DC10 /* MoodShopApp.swift */,
 				DF93D8B32C16D53C00E9DC10 /* Home */,
 				DF877A9A2C2A97F800C6CCBA /* Detail */,
@@ -537,6 +578,8 @@
 				DF69039A2C36520800DC5895 /* DetailContainer.swift in Sources */,
 				DFA0E0EE2C242BF300EFAF4C /* String+Extension.swift in Sources */,
 				DF763D9D2C1827C9001F5B60 /* ShopModel.swift in Sources */,
+				DF85D8542C3D45000024AEBD /* LikeView.swift in Sources */,
+				DF85D84F2C3D192A0024AEBD /* WKWebHosting.swift in Sources */,
 				DF93D8872C16C51400E9DC10 /* ContentView.swift in Sources */,
 				DF5786472C292D070015E105 /* HeaderView.swift in Sources */,
 				DF5786492C2930480015E105 /* CategoryView.swift in Sources */,
@@ -546,6 +589,7 @@
 				DF9BE4002C380706005F6E32 /* RealmRepository.swift in Sources */,
 				DF7F226A2C1AEA0800A182A7 /* ResponseErrorModel.swift in Sources */,
 				DF93D8C72C17058E00E9DC10 /* Router.swift in Sources */,
+				DF85D8562C3D45220024AEBD /* LikeContainer.swift in Sources */,
 				DF93D8BD2C16EF8900E9DC10 /* ContainerProtocol.swift in Sources */,
 				DFA6D36C2C1980490017CEE2 /* HomeRepository.swift in Sources */,
 				DF763DA12C18462B001F5B60 /* ShopEntity.swift in Sources */,

@@ -15,6 +15,8 @@ struct ContentView: View {
     
     @State
     var selectedProduct: ShopItemEntity?
+    @State
+    var isLikeActive: Bool = false
     
     var body: some View {
         NavigationView {
@@ -39,20 +41,42 @@ struct ContentView: View {
                 ToolbarItem(placement: .principal) {
                     Text("Mood Shop")
                         .setTextStyle(size: 30, design: .serif, weight: .semibold)
+                    
                 }
+                
+                ToolbarItem(placement: .topBarTrailing) {
+                    Button {
+                        isLikeActive.toggle()
+                        print("tap")
+                    } label: {
+                        Image("heart", bundle: nil)
+                            .resizable()
+                            .aspectRatio(contentMode: .fit)
+                            .frame(width: 25, height: 25)
+                    }
+                }
+
             }
         }
         .onAppear {
             container.send(.onAppear)
         }
-        .searchable(text: Binding(get: {
+        .searchable(text: Binding {
             container.state.text
-        }, set: { text, _ in
+        } set: { text, _ in
             container.send(.search(text))
-        }))
+        })
         .onSubmit(of: .search) {
             container.send(.searchTap)
         }
+        
+        NavigationLink(
+            destination: LikeView(),
+            isActive: $isLikeActive,
+            label: {
+                EmptyView()
+            }
+        )
         
     }
 }
