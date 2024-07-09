@@ -7,6 +7,7 @@
 
 import SwiftUI
 import Kingfisher
+import WebKit
 
 struct DetailView: View {
     
@@ -94,9 +95,19 @@ struct DetailView: View {
             HStack(spacing: 10) {
                 
                 Button {
-                    print("tap")
+                    container.send(.buyButtonTap)
                 } label: {
                     Text("구매하기")
+                        .sheet(isPresented: Binding {
+                            container.state.buyButtonState
+                        } set: { _ in }) {
+                            if let link = product?.link {
+                                WKWebHosting(url: link)
+                                    .onDisappear {
+                                        container.send(.disappear)
+                                    }
+                            }
+                        }
                         .setTextStyle(size: 20, design: .monospaced, weight: .bold)
                         .foregroundStyle(Color.black)
                 }
