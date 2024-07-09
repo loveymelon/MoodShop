@@ -14,6 +14,8 @@ final class DetailContainer: ObservableObject, ContainerProtocol {
         case onAppear(ShopItemEntity)
         case netTrigger
         case likeButtonTap(ShopItemEntity)
+        case buyButtonTap
+        case disappear
     }
     
     struct State {
@@ -21,6 +23,7 @@ final class DetailContainer: ObservableObject, ContainerProtocol {
         var shopItems: [ShopItemEntity] = []
         var likeButtonState: Bool = false
         var netState: Bool = false
+        var buyButtonState: Bool = false
     }
     
     @Published
@@ -58,6 +61,10 @@ final class DetailContainer: ObservableObject, ContainerProtocol {
             } else {
                 likeRepository.deleteLikeItem(deleteItem: item)
             }
+        case .buyButtonTap:
+            state.buyButtonState.toggle()
+        case .disappear:
+            state.buyButtonState.toggle()
         }
     }
 }
