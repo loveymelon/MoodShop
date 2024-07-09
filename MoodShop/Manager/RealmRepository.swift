@@ -12,21 +12,22 @@ final class RealmRepository: RealmProtocol {
     
     private let realm = try! Realm()
     
-    func create(data: ShopItemEntity) throws {
-        
-        let imageURL = data.image?.absoluteString ?? ""
+    func create(data: ShopItemRequestDTO) -> Result<Void, RealmError> {
         
         do {
             
             try realm.write {
-                let shopItem = ShopItemRequestDTO(title: data.title, link: data.link, image: imageURL, lprice: data.lprice, mallName: data.mallName, productId: data.productId)
                 
-                realm.add(shopItem, update: .modified)
+                print("dd", realm.configuration.fileURL)
+                realm.add(data, update: .modified)
+                
             }
+            
+            return .success(())
             
         } catch {
             
-            throw RealmError.createFail
+            return .failure(.createFail)
             
         }
         
@@ -36,12 +37,25 @@ final class RealmRepository: RealmProtocol {
         return Array(realm.objects(ShopItemRequestDTO.self))
     }
     
-    func delete(data: ShopItemEntity) {
+    func delete(data: ShopItemEntity) -> Result<Void, RealmError> {
         let imageURL = data.image?.absoluteString ?? ""
         
-        let shopItem = ShopItemRequestDTO(title: data.title, link: data.link, image: imageURL, lprice: data.lprice, mallName: data.mallName, productId: data.productId)
+//        let shopItem = ShopItemRequestDTO(title: data.title, link: data.link, image: imageURL, lprice: data.lprice, mallName: data.mallName, productId: data.productId)
         
-        realm.delete(shopItem)
+        let shopItem = realm.objects(ShopItemRequestDTO.self).where {
+            $0.productId == data.productId
+        }
+        
+        do {
+            
+            try realm.write {
+                realm.delete(shopItem)
+            }
+            return .success(())
+            
+        } catch {
+            return .failure(.deleteFail)
+        }
     }
     
 }

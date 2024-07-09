@@ -8,7 +8,7 @@
 import Foundation
 
 protocol RealmProtocol {
-    func create(data: ShopItemEntity) throws
+    func create(data: ShopItemRequestDTO) -> Result<Void, RealmError>
     func fetch() -> [ShopItemRequestDTO]
-    func delete(data: ShopItemEntity)
+    func delete(data: ShopItemEntity) -> Result<Void, RealmError>
 }
