@@ -12,4 +12,17 @@ enum RealmError: Error {
     case updateFail(text: String)
     case deleteFail
     case unknownError
+    
+    var description: String {
+        switch self {
+        case .createFail:
+            return "createFail"
+        case .updateFail(let text):
+            return text
+        case .deleteFail:
+            return "deleteFail"
+        case .unknownError:
+            return "unknownError"
+        }
+    }
 }
