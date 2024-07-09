@@ -110,7 +110,9 @@ struct DetailView: View {
                 Button {
                     
                     withAnimation {
-                        container.send(.likeButtonTap)
+                        if let product = product {
+                            container.send(.likeButtonTap(product))
+                        }
                     }
                     
                 } label: {

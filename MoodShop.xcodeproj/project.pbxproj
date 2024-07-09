@@ -19,6 +19,8 @@
 		DF763DA32C185DFC001F5B60 /* HomeMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF763DA22C185DFC001F5B60 /* HomeMapper.swift */; };
 		DF7F226A2C1AEA0800A182A7 /* ResponseErrorModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF7F22692C1AEA0800A182A7 /* ResponseErrorModel.swift */; };
 		DF7F226C2C1AEAF800A182A7 /* JSONManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF7F226B2C1AEAF800A182A7 /* JSONManager.swift */; };
+		DF85D8452C3CEF350024AEBD /* LikeRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF85D8442C3CEF350024AEBD /* LikeRepository.swift */; };
+		DF85D8482C3CEFAD0024AEBD /* DetailMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF85D8472C3CEFAD0024AEBD /* DetailMapper.swift */; };
 		DF877AA02C2A988200C6CCBA /* DetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF877A9F2C2A988200C6CCBA /* DetailView.swift */; };
 		DF877AA32C2A9D9100C6CCBA /* MAnchorKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF877AA22C2A9D9100C6CCBA /* MAnchorKey.swift */; };
 		DF93D8852C16C51400E9DC10 /* MoodShopApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF93D8842C16C51400E9DC10 /* MoodShopApp.swift */; };
@@ -75,6 +77,8 @@
 		DF763DA22C185DFC001F5B60 /* HomeMapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeMapper.swift; sourceTree = "<group>"; };
 		DF7F22692C1AEA0800A182A7 /* ResponseErrorModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResponseErrorModel.swift; sourceTree = "<group>"; };
 		DF7F226B2C1AEAF800A182A7 /* JSONManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSONManager.swift; sourceTree = "<group>"; };
+		DF85D8442C3CEF350024AEBD /* LikeRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LikeRepository.swift; sourceTree = "<group>"; };
+		DF85D8472C3CEFAD0024AEBD /* DetailMapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailMapper.swift; sourceTree = "<group>"; };
 		DF877A9F2C2A988200C6CCBA /* DetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailView.swift; sourceTree = "<group>"; };
 		DF877AA22C2A9D9100C6CCBA /* MAnchorKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MAnchorKey.swift; sourceTree = "<group>"; };
 		DF93D8812C16C51400E9DC10 /* MoodShop.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MoodShop.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -168,9 +172,27 @@
 			path = Entity;
 			sourceTree = "<group>";
 		};
+		DF85D8432C3CEF200024AEBD /* Repository */ = {
+			isa = PBXGroup;
+			children = (
+				DF85D8442C3CEF350024AEBD /* LikeRepository.swift */,
+			);
+			path = Repository;
+			sourceTree = "<group>";
+		};
+		DF85D8462C3CEF9E0024AEBD /* Mapper */ = {
+			isa = PBXGroup;
+			children = (
+				DF85D8472C3CEFAD0024AEBD /* DetailMapper.swift */,
+			);
+			path = Mapper;
+			sourceTree = "<group>";
+		};
 		DF877A9A2C2A97F800C6CCBA /* Detail */ = {
 			isa = PBXGroup;
 			children = (
+				DF85D8462C3CEF9E0024AEBD /* Mapper */,
+				DF85D8432C3CEF200024AEBD /* Repository */,
 				DF877A9E2C2A985000C6CCBA /* Container */,
 				DF877A9D2C2A984300C6CCBA /* View */,
 			);
@@ -511,6 +533,7 @@
 				DF93D8C22C16FEC300E9DC10 /* RouterProtocol.swift in Sources */,
 				DF57864B2C2930E70015E105 /* CategoryEnum.swift in Sources */,
 				DF93D8C42C17035A00E9DC10 /* APIKey.swift in Sources */,
+				DF85D8482C3CEFAD0024AEBD /* DetailMapper.swift in Sources */,
 				DF69039A2C36520800DC5895 /* DetailContainer.swift in Sources */,
 				DFA0E0EE2C242BF300EFAF4C /* String+Extension.swift in Sources */,
 				DF763D9D2C1827C9001F5B60 /* ShopModel.swift in Sources */,
@@ -530,6 +553,7 @@
 				DF877AA02C2A988200C6CCBA /* DetailView.swift in Sources */,
 				DF93D8B62C16D5FA00E9DC10 /* DynamicTextModifier.swift in Sources */,
 				DF763DA32C185DFC001F5B60 /* HomeMapper.swift in Sources */,
+				DF85D8452C3CEF350024AEBD /* LikeRepository.swift in Sources */,
 				DF877AA32C2A9D9100C6CCBA /* MAnchorKey.swift in Sources */,
 				DF9BE4022C380B12005F6E32 /* RealmProtocol.swift in Sources */,
 				DF7F226C2C1AEAF800A182A7 /* JSONManager.swift in Sources */,

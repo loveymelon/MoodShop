@@ -13,7 +13,7 @@ final class DetailContainer: ObservableObject, ContainerProtocol {
     enum Intent {
         case onAppear
         case netTrigger
-        case likeButtonTap
+        case likeButtonTap(ShopItemEntity)
     }
     
     struct State {
@@ -23,10 +23,10 @@ final class DetailContainer: ObservableObject, ContainerProtocol {
         var netState: Bool = false
     }
     
-    
     @Published
     private(set) var state: State = State()
     private let homeRepository = HomeRepository()
+    private let likeRepository = LikeRepositoryIMPL()
     private var cancellables = Set<AnyCancellable>()
     
     func send(_ intent: Intent) {
@@ -44,11 +44,13 @@ final class DetailContainer: ObservableObject, ContainerProtocol {
                     await searchNetwork(text: item.rawValue, categoryEnum: item)
                 }
             }
-        case .likeButtonTap:
+        case .likeButtonTap(let item):
             state.likeButtonState.toggle()
             
             if state.likeButtonState {
-                
+                likeRepository.createLikeItem(likeItem: item)
+            } else {
+                likeRepository.deleteLikeItem(deleteItem: item)
             }
         }
     }
