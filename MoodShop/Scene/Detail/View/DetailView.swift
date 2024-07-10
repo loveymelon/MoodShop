@@ -149,7 +149,6 @@ struct DetailView: View {
             .frame(height: 50)
             .padding(.all, 20)
             
-            
         }
     }
 }

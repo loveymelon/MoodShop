@@ -15,8 +15,6 @@ struct ContentView: View {
     
     @State
     var selectedProduct: ShopItemEntity?
-    @State
-    var isLikeActive: Bool = false
     
     var body: some View {
         NavigationView {
@@ -45,9 +43,9 @@ struct ContentView: View {
                 }
                 
                 ToolbarItem(placement: .topBarTrailing) {
-                    Button {
-                        isLikeActive.toggle()
-                        print("tap")
+
+                    NavigationLink {
+                        LikeView()
                     } label: {
                         Image("heart", bundle: nil)
                             .resizable()
@@ -55,7 +53,6 @@ struct ContentView: View {
                             .frame(width: 25, height: 25)
                     }
                 }
-
             }
         }
         .onAppear {
@@ -69,14 +66,6 @@ struct ContentView: View {
         .onSubmit(of: .search) {
             container.send(.searchTap)
         }
-        
-        NavigationLink(
-            destination: LikeView(),
-            isActive: $isLikeActive,
-            label: {
-                EmptyView()
-            }
-        )
         
     }
 }

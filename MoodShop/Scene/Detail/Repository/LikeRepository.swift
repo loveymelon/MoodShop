@@ -19,7 +19,7 @@ final class LikeRepositoryIMPL {
         let result = realmRepo.create(data: requestDTO)
         
         switch result {
-        case .success(let success):
+        case .success(_):
             return ()
         case .failure(let error):
             print(error)
@@ -31,7 +31,10 @@ final class LikeRepositoryIMPL {
         let result = realmRepo.fetch()
         var resultEntity: [ShopItemEntity] = []
         
+        print("fetch")
+        
         for item in result {
+            dump(item)
             resultEntity.append(mapper.dtoToEntity(item))
         }
         
