@@ -37,6 +37,7 @@ final class RealmRepository: RealmProtocol {
         return Array(realm.objects(ShopItemRequestDTO.self))
     }
     
+    @discardableResult
     func delete(data: ShopItemEntity) -> Result<Void, RealmError> {
         let imageURL = data.image?.absoluteString ?? ""
         
