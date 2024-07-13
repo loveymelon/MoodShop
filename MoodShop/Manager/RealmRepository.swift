@@ -12,8 +12,7 @@ final class RealmRepository: RealmProtocol {
     
     private let realm = try! Realm()
     
-    func create(data: ShopItemRequestDTO) -> Result<Void, RealmError> {
-        
+    func create<O: Object>(data: O) -> Result<Void, RealmError> {
         do {
             
             try realm.write {
@@ -30,30 +29,31 @@ final class RealmRepository: RealmProtocol {
             return .failure(.createFail)
             
         }
-        
     }
     
-    func fetch() -> [ShopItemRequestDTO] {
-        return Array(realm.objects(ShopItemRequestDTO.self))
+    func fetch<O: Object>(type: O.Type) -> [O] {
+        return Array(realm.objects(O.self))
     }
     
-    @discardableResult
-    func delete(data: ShopItemEntity) -> Result<Void, RealmError> {
-        let imageURL = data.image?.absoluteString ?? ""
-        
-//        let shopItem = ShopItemRequestDTO(title: data.title, link: data.link, image: imageURL, lprice: data.lprice, mallName: data.mallName, productId: data.productId)
-        
-        let shopItem = realm.objects(ShopItemRequestDTO.self).where {
-            $0.productId == data.productId
-        }
-        
+    func delete<O: Object>(data: O) -> Result<Void, RealmError> {
         do {
-            
             try realm.write {
-                realm.delete(shopItem)
+                realm.delete(data)
             }
             return .success(())
-            
+        } catch {
+            return .failure(.deleteFail)
+        }
+    }
+    
+    func deleteAll() -> Result<Void, RealmError>{
+        let datas = realm.objects(SearchRequestModel.self)
+        
+        do {
+            try realm.write {
+                realm.delete(datas)
+            }
+            return .success(())
         } catch {
             return .failure(.deleteFail)
         }
