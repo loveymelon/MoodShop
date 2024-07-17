@@ -35,7 +35,12 @@ final class RealmRepository: RealmProtocol {
         return Array(realm.objects(O.self))
     }
     
-    func delete<O: Object>(data: O) -> Result<Void, RealmError> {
+    func delete<O: Object>(data: O, type: O.Type, id: String = "") -> Result<Void, RealmError> {
+
+        guard let data = realm.object(ofType: type, forPrimaryKey: id) else {
+            return .failure(.deleteFail)
+        }
+        
         do {
             try realm.write {
                 realm.delete(data)

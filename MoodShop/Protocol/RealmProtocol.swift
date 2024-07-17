@@ -6,9 +6,10 @@
 //
 
 import Foundation
+import RealmSwift
 
 protocol RealmProtocol {
-    func create(data: ShopItemRequestDTO) -> Result<Void, RealmError>
-    func fetch() -> [ShopItemRequestDTO]
-    func delete(data: ShopItemEntity) -> Result<Void, RealmError>
+    func create<O: Object>(data: O) -> Result<Void, RealmError>
+    func fetch<O: Object>(type: O.Type) -> [O]
+    func delete<O: Object>(data: O, type: O.Type, id: String) -> Result<Void, RealmError>
 }
