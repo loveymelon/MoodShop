@@ -9,7 +9,7 @@ import Foundation
 import RealmSwift
 
 class ShopItemRequestDTO: Object {
-    @Persisted(primaryKey: true) var _id: ObjectId
+    @Persisted(primaryKey: true) var id: String
     
     @Persisted var title: String
     @Persisted var link: String
@@ -18,9 +18,10 @@ class ShopItemRequestDTO: Object {
     @Persisted var mallName: String
     @Persisted var productId: String
     
-    convenience init(title: String, link: String, image: String, lprice: Int, mallName: String, productId: String) {
+    convenience init(id: String, title: String, link: String, image: String, lprice: Int, mallName: String, productId: String) {
         self.init()
         
+        self.id = id
         self.title = title
         self.link = link
         self.image = image
