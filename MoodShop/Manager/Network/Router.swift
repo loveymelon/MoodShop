@@ -57,7 +57,7 @@ extension Router: RouterProtocol {
     var queryString: [QueryString] {
         switch self {
         case .search:
-            return [.query, .display]
+            return [.query, .start, .display]
         }
     }
     

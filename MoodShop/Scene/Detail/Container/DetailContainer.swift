@@ -21,6 +21,7 @@ final class DetailContainer: ObservableObject, ContainerProtocol {
     struct State {
         var error: String = ""
         var shopItems: [ShopItemEntity] = []
+        var categoryTitles: [String] = []
         var likeButtonState: Bool = false
         var netState: Bool = false
         var buyButtonState: Bool = false
@@ -28,6 +29,7 @@ final class DetailContainer: ObservableObject, ContainerProtocol {
     
     @Published
     private(set) var state: State = State()
+    
     private let homeRepository = HomeRepository()
     private let likeRepository = LikeRepositoryIMPL()
     private var cancellables = Set<AnyCancellable>()
@@ -38,19 +40,21 @@ final class DetailContainer: ObservableObject, ContainerProtocol {
             let likeItems = likeRepository.fetchLikeItems()
             
             if !state.netState {
+                print("startstart")
                 send(.netTrigger)
                 state.netState.toggle()
             }
+
+            for items in likeItems {
+                if items.productId == item.productId {
+                    state.likeButtonState = true
+                }
+            }
             
-            state.likeButtonState = likeItems.contains(item)
-            
+            print(state.likeButtonState)
         case .netTrigger:
             Task {
                 await searchNetwork(text: "시즌")
-                
-                for item in CategoryEnum.allCases {
-                    await searchNetwork(text: item.rawValue, categoryEnum: item)
-                }
             }
         case .likeButtonTap(let item):
             
@@ -70,6 +74,7 @@ final class DetailContainer: ObservableObject, ContainerProtocol {
 }
 
 extension DetailContainer {
+    @MainActor // MainActor.shared 메인 쓰레드 보장
     private func searchNetwork(text: String, categoryEnum: CategoryEnum = .outerwear, display: String = "10") async {
         
         await homeRepository.fetchSearch(text: text, display: display)
@@ -88,6 +93,12 @@ extension DetailContainer {
                 
                 guard let self else { return }
                 
+                var temp: [String] = []
+                for item in data.items {
+                    temp.append(item.title.rmHTMLTag)
+                }
+                
+                state.categoryTitles = temp
                 state.shopItems = data.items
                 
             }).store(in: &cancellables)

@@ -40,7 +40,7 @@ protocol RouterProtocol {
 }
 
 extension RouterProtocol {
-    func asURLRequest(text: String, display: String = "10") throws -> URLRequest {
+    func asURLRequest(text: String, start: String, display: String = "10") throws -> URLRequest {
         
         guard let url = URL(string: baseURL.rawValue) else { throw NetworkError.invalidURL }
         var urlRequest: URLRequest
@@ -58,14 +58,12 @@ extension RouterProtocol {
             
             var query = ""
             
-            if item.rawValue == "query" {
-                
+            if item == .query {
                 query = text
-                
+            } else if item == .start {
+                query = start
             } else {
-                
                 query = display
-                
             }
                 
             let queryItem = URLQueryItem(name: item.rawValue, value: query)
