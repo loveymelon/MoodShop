@@ -25,6 +25,7 @@ final class HomeContainer: ObservableObject, ContainerProtocol {
         var error: String = ""
         var imageIndex: Int = 0
         var categoryItems: [CategoryEnum: [ShopItemEntity]] = [:]
+        var categoryTitles: [CategoryEnum: [String]] = [:]
     }
     
     @Published
@@ -43,8 +44,8 @@ final class HomeContainer: ObservableObject, ContainerProtocol {
                 for item in CategoryEnum.allCases {
                     await searchNetwork(text: item.rawValue, categoryEnum: item)
                 }
-            }
             
+            }
             
         case .search(let text):
             state.text = text
@@ -84,6 +85,12 @@ extension HomeContainer {
                 if text == "옷" {
                     state.shopItems = data.items
                 } else {
+                    var temp: [String] = []
+                    for item in data.items {
+                        temp.append(item.title.rmHTMLTag)
+                    }
+                    
+                    state.categoryTitles[categoryEnum] = temp
                     state.categoryItems[categoryEnum] = data.items
                 }
                 

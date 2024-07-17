@@ -16,9 +16,9 @@ final class HomeRepository {
      // 각 repository마다 mapper가 무조건 다 필요하지않을까 그래서 프로토콜로 명시해주는건 어떨까?
     let mapper = HomeMapper()
     
-    func fetchSearch(text: String, display: String = "10") async -> AnyPublisher<ShopEntity, AppError> {
+    func fetchSearch(text: String, start: String = "1", display: String = "10") async -> AnyPublisher<ShopEntity, AppError> {
         
-        return await NetworkManager.shared.search(text: text, display: display)
+        return await NetworkManager.shared.search(text: text, start: start, display: display)
             .map { [weak self] result in
                 guard let self else { return ShopEntity() }
                 return mapper.dtoToEntity(data: result) }
