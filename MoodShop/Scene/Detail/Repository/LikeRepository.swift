@@ -28,13 +28,10 @@ final class LikeRepositoryIMPL {
     }
     
     func fetchLikeItems() -> [ShopItemEntity] {
-        let result = realmRepo.fetch()
+        let result = realmRepo.fetch(type: ShopItemRequestDTO.self)
         var resultEntity: [ShopItemEntity] = []
         
-        print("fetch")
-        
         for item in result {
-            dump(item)
             resultEntity.append(mapper.dtoToEntity(item))
         }
         
@@ -42,9 +39,18 @@ final class LikeRepositoryIMPL {
     }
     
     func deleteLikeItem(deleteItem: ShopItemEntity) -> Void {
-        realmRepo.delete(data: deleteItem)
         
-        return ()
+        let deleteData = mapper.entityToDTO(deleteItem)
+        
+        let result = realmRepo.delete(data: deleteData, type: ShopItemRequestDTO.self, id: deleteData.id)
+        
+        switch result {
+        case .success(let success):
+            return ()
+        case .failure(let failure):
+            print("deleteError")
+        }
+        
     }
     
 }
