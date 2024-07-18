@@ -103,62 +103,64 @@ extension DetailView {
     }
     
     func makeBottomButton() -> some View {
-        HStack(spacing: 10) {
-            
-            Button {
-                container.send(.buyButtonTap)
-            } label: {
-                Text("구매하기")
-                    .sheet(isPresented: Binding {
-                        container.state.buyButtonState
-                    } set: { _ in }) {
-                        if let link = product?.link {
-                            WKWebHosting(url: link)
-                                .onDisappear {
-                                    container.send(.disappear)
-                                }
+        HStack {
+            HStack {
+                Button {
+                    container.send(.buyButtonTap)
+                } label: {
+                    Text("구매하기")
+                        .sheet(isPresented: Binding {
+                            container.state.buyButtonState
+                        } set: { _ in }) {
+                            if let link = product?.link {
+                                WKWebHosting(url: link)
+                                    .onDisappear {
+                                        container.send(.disappear)
+                                    }
+                            }
+                        }
+                        .setTextStyle(size: 20, design: .monospaced, weight: .bold)
+                        .foregroundStyle(Color.black)
+                }
+                .frame(maxWidth: .infinity)
+                .frame(height: 40)
+                .background(
+                    LinearGradient(colors: [
+                        Color.red.opacity(0.1), Color.blue.opacity(0.2)
+                    ], startPoint: .topLeading, endPoint: .bottomTrailing)
+                )
+                .clipShape(RoundedRectangle(cornerRadius: 40))
+                
+                Button {
+                    
+                    withAnimation {
+                        if let product = product {
+                            container.send(.likeButtonTap(product))
                         }
                     }
-                    .setTextStyle(size: 20, design: .monospaced, weight: .bold)
-                    .foregroundStyle(Color.black)
-            }
-            .padding()
-            .frame(maxWidth: .infinity)
-            .background(
-                LinearGradient(colors: [
-                    Color.red.opacity(0.1), Color.blue.opacity(0.2)
-                ], startPoint: .topLeading, endPoint: .bottomTrailing)
-            )
-            .clipShape(RoundedRectangle(cornerRadius: 40))
-            
-            Button {
-                
-                withAnimation {
-                    if let product = product {
-                        container.send(.likeButtonTap(product))
-                    }
+                    
+                } label: {
+                    Image(
+                        container.state.likeButtonState ? "heartFill" : "heart",
+                        label: Text("")
+                    )
+                        .resizable()
+                        .aspectRatio(contentMode: .fit)
+                        .padding()
+                        .frame(width: 50)
                 }
-                
-            } label: {
-                Image(
-                    container.state.likeButtonState ? "heartFill" : "heart",
-                    label: Text("")
+                .background(
+                    LinearGradient(colors: [
+                        Color.red.opacity(0.1), Color.blue.opacity(0.2)
+                    ], startPoint: .topLeading, endPoint: .bottomTrailing)
                 )
-                    .resizable()
-                    .aspectRatio(contentMode: .fit)
-                    .padding()
-                    .frame(width: 50)
+                .clipShape(RoundedRectangle(cornerRadius: 15))
             }
-            .background(
-                LinearGradient(colors: [
-                    Color.red.opacity(0.1), Color.blue.opacity(0.2)
-                ], startPoint: .topLeading, endPoint: .bottomTrailing)
-            )
-            .clipShape(RoundedRectangle(cornerRadius: 15))
-            
+            .padding(.horizontal, 20)
+          
         }
-        .frame(height: 50)
-        .padding(.all, 20)
+        .background(Color.white)
+       
     }
 }
 
