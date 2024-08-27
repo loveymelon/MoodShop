@@ -7,6 +7,6 @@
 
 import Foundation
 
-struct ResponseErrorModel: Decodable {
+struct ResponseErrorModel: DTO {
     let errorCode: String
 }

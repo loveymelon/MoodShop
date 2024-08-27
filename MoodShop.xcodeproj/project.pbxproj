@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		DF1DECE72C7DAA3D0098F761 /* Realm in Frameworks */ = {isa = PBXBuildFile; productRef = DF1DECE62C7DAA3D0098F761 /* Realm */; };
+		DF1DECE92C7DAA3D0098F761 /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = DF1DECE82C7DAA3D0098F761 /* RealmSwift */; };
+		DF1DECEB2C7DBAF00098F761 /* DTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF1DECEA2C7DBAF00098F761 /* DTO.swift */; };
+		DF1DECED2C7DC2160098F761 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = DF1DECEC2C7DC2160098F761 /* README.md */; };
 		DF4149C32C41332A00CF9B5D /* SearchContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF4149C22C41332A00CF9B5D /* SearchContainer.swift */; };
 		DF4149C52C41334000CF9B5D /* SearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF4149C42C41334000CF9B5D /* SearchView.swift */; };
 		DF4149C92C41354500CF9B5D /* SearchRequestModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF4149C82C41354500CF9B5D /* SearchRequestModel.swift */; };
@@ -48,7 +52,6 @@
 		DF9BE4002C380706005F6E32 /* RealmRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF9BE3FF2C380706005F6E32 /* RealmRepository.swift */; };
 		DF9BE4022C380B12005F6E32 /* RealmProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF9BE4012C380B12005F6E32 /* RealmProtocol.swift */; };
 		DF9BE4042C380BC7005F6E32 /* RealmError.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF9BE4032C380BC7005F6E32 /* RealmError.swift */; };
-		DF9BE4072C381101005F6E32 /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = DF9BE4062C381101005F6E32 /* RealmSwift */; };
 		DF9C62BF2C4642C40019AE3E /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF9C62BE2C4642C40019AE3E /* HomeView.swift */; };
 		DF9C62C92C4792330019AE3E /* ShopItemListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF9C62C82C4792330019AE3E /* ShopItemListView.swift */; };
 		DF9C62CC2C4792560019AE3E /* ShopItemListContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF9C62CB2C4792560019AE3E /* ShopItemListContainer.swift */; };
@@ -76,6 +79,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		DF1DECEA2C7DBAF00098F761 /* DTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DTO.swift; sourceTree = "<group>"; };
+		DF1DECEC2C7DC2160098F761 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		DF4149C22C41332A00CF9B5D /* SearchContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchContainer.swift; sourceTree = "<group>"; };
 		DF4149C42C41334000CF9B5D /* SearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchView.swift; sourceTree = "<group>"; };
 		DF4149C82C41354500CF9B5D /* SearchRequestModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchRequestModel.swift; sourceTree = "<group>"; };
@@ -133,7 +138,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				DF9BE4072C381101005F6E32 /* RealmSwift in Frameworks */,
+				DF1DECE92C7DAA3D0098F761 /* RealmSwift in Frameworks */,
+				DF1DECE72C7DAA3D0098F761 /* Realm in Frameworks */,
 				DF69039E2C366CE200DC5895 /* Kingfisher in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -306,6 +312,7 @@
 		DF93D8782C16C51400E9DC10 = {
 			isa = PBXGroup;
 			children = (
+				DF1DECEC2C7DC2160098F761 /* README.md */,
 				DF93D8B02C16C63700E9DC10 /* .gitignore */,
 				DF93D8832C16C51400E9DC10 /* MoodShop */,
 				DF93D8942C16C51600E9DC10 /* MoodShopTests */,
@@ -425,6 +432,7 @@
 				DF57864C2C29494D0015E105 /* Entity.swift */,
 				DF57864E2C2964100015E105 /* MapperProtocol.swift */,
 				DF9BE4012C380B12005F6E32 /* RealmProtocol.swift */,
+				DF1DECEA2C7DBAF00098F761 /* DTO.swift */,
 			);
 			path = Protocol;
 			sourceTree = "<group>";
@@ -517,7 +525,8 @@
 			name = MoodShop;
 			packageProductDependencies = (
 				DF69039D2C366CE200DC5895 /* Kingfisher */,
-				DF9BE4062C381101005F6E32 /* RealmSwift */,
+				DF1DECE62C7DAA3D0098F761 /* Realm */,
+				DF1DECE82C7DAA3D0098F761 /* RealmSwift */,
 			);
 			productName = MoodShop;
 			productReference = DF93D8812C16C51400E9DC10 /* MoodShop.app */;
@@ -593,7 +602,7 @@
 			mainGroup = DF93D8782C16C51400E9DC10;
 			packageReferences = (
 				DF69039C2C366CE200DC5895 /* XCRemoteSwiftPackageReference "Kingfisher" */,
-				DF9BE4052C381101005F6E32 /* XCRemoteSwiftPackageReference "realm-swift" */,
+				DF1DECE52C7DAA3D0098F761 /* XCRemoteSwiftPackageReference "realm-swift" */,
 			);
 			productRefGroup = DF93D8822C16C51400E9DC10 /* Products */;
 			projectDirPath = "";
@@ -613,6 +622,7 @@
 			files = (
 				DF93D88C2C16C51600E9DC10 /* Preview Assets.xcassets in Resources */,
 				DF93D8B12C16C63700E9DC10 /* .gitignore in Resources */,
+				DF1DECED2C7DC2160098F761 /* README.md in Resources */,
 				DF93D8892C16C51600E9DC10 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -665,6 +675,7 @@
 				DF85D8562C3D45220024AEBD /* LikeContainer.swift in Sources */,
 				DF93D8BD2C16EF8900E9DC10 /* ContainerProtocol.swift in Sources */,
 				DFA6D36C2C1980490017CEE2 /* HomeRepository.swift in Sources */,
+				DF1DECEB2C7DBAF00098F761 /* DTO.swift in Sources */,
 				DF763DA12C18462B001F5B60 /* ShopEntity.swift in Sources */,
 				DFA6D3702C198BF00017CEE2 /* CommonError.swift in Sources */,
 				DF877AA02C2A988200C6CCBA /* DetailView.swift in Sources */,
@@ -1012,6 +1023,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		DF1DECE52C7DAA3D0098F761 /* XCRemoteSwiftPackageReference "realm-swift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/realm/realm-swift.git";
+			requirement = {
+				kind = exactVersion;
+				version = 10.47.0;
+			};
+		};
 		DF69039C2C366CE200DC5895 /* XCRemoteSwiftPackageReference "Kingfisher" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/onevcat/Kingfisher.git";
@@ -1020,26 +1039,23 @@
 				minimumVersion = 7.12.0;
 			};
 		};
-		DF9BE4052C381101005F6E32 /* XCRemoteSwiftPackageReference "realm-swift" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/realm/realm-swift.git";
-			requirement = {
-				kind = exactVersion;
-				version = 10.50.0;
-			};
-		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		DF1DECE62C7DAA3D0098F761 /* Realm */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = DF1DECE52C7DAA3D0098F761 /* XCRemoteSwiftPackageReference "realm-swift" */;
+			productName = Realm;
+		};
+		DF1DECE82C7DAA3D0098F761 /* RealmSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = DF1DECE52C7DAA3D0098F761 /* XCRemoteSwiftPackageReference "realm-swift" */;
+			productName = RealmSwift;
+		};
 		DF69039D2C366CE200DC5895 /* Kingfisher */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = DF69039C2C366CE200DC5895 /* XCRemoteSwiftPackageReference "Kingfisher" */;
 			productName = Kingfisher;
-		};
-		DF9BE4062C381101005F6E32 /* RealmSwift */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = DF9BE4052C381101005F6E32 /* XCRemoteSwiftPackageReference "realm-swift" */;
-			productName = RealmSwift;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

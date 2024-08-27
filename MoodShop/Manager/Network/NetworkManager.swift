@@ -14,14 +14,11 @@ struct NetworkManager {
     
     private init() { }
     
-    func search(text: String, start: String, display: String) async -> AnyPublisher<ShopModel, AppError> {
+    func search(text: String, start: String, display: String) -> AnyPublisher<ShopModel, AppError> {
         
         return Future<ShopModel,AppError> { promise in
-            
             Task {
-                
                 do {
-                    
                     let request = try Router.search.asURLRequest(text: text, start: start, display: display)
                     
                     let (data, response) = try await URLSession.shared.data(for: request)
@@ -34,9 +31,7 @@ struct NetworkManager {
                     print(error)
                     promise(.failure(.networkError(.unowned)))
                 }
-                
             }
-            
         }
         .eraseToAnyPublisher()
         

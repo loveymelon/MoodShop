@@ -8,14 +8,14 @@
 import Foundation
 
 // DTO
-struct ShopModel: Decodable {
+struct ShopModel: DTO {
     let total: Int
     let start: Int
     let display: Int
     let items: [ShopItem]
 }
 
-struct ShopItem: Decodable {
+struct ShopItem: DTO {
     let title: String
     let link: String
     let image: String

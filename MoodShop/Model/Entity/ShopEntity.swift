@@ -12,7 +12,7 @@ import Foundation
 // 그래서 Entity를 사용함으로써 외부의 의존성을 낮춘 것이다.
 
 // DTO는 그 역할만 하면 되는데 앱 내에 모델처럼 사용하면 그 역할이 명확해지지 않는다. 그래서 Entity를 사용
-struct ShopEntity {
+struct ShopEntity: Entity {
     let total: Int
     let start: Int
     let display: Int
@@ -26,7 +26,7 @@ struct ShopEntity {
     }
 }
 
-struct ShopItemEntity: Hashable {
+struct ShopItemEntity: Entity, Hashable {
     let title: String
     let link: String
     let image: URL?
